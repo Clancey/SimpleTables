@@ -1,0 +1,3 @@
+[submodule "MonoTouch.Dialog"]
+	path = MonoTouch.Dialog
+	url = git://github.com/migueldeicaza/MonoTouch.Dialog.git
