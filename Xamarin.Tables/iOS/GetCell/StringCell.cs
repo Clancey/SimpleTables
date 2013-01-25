@@ -20,6 +20,8 @@ namespace Xamarin.Tables
 			cell.Accessory = UITableViewCellAccessory.None;
 			cell.TextLabel.Text = Caption;
 			cell.TextLabel.TextAlignment = Alignment;
+			cell.TextLabel.BackgroundColor = UIColor.Clear;
+
 			
 			// The check is needed because the cell might have been recycled.
 			if (cell.DetailTextLabel != null)

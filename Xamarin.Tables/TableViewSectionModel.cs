@@ -19,6 +19,7 @@ namespace Xamarin.Tables
 		List<Section> sections = new List<Section>();
 		
 		public event EventHandler<EventArg<Cell>> RowTapped;
+		public event EventHandler<EventArg<Cell>> RowLongPress;
 		#region implemented abstract members of TableViewModel
 
 		public override int RowsInSection (int section)
@@ -54,7 +55,12 @@ namespace Xamarin.Tables
 		public override void RowSelected (Cell item)
 		{
 			if (RowTapped != null)
-			RowTapped (this, new EventArg<Cell> (item));
+				RowTapped (this, new EventArg<Cell> (item));
+		}
+		public override void LongPressOnItem (Cell item)
+		{
+			if (RowLongPress != null)
+				RowLongPress (this, new EventArg<Cell> (item));
 		}
 
 		public override Cell ItemFor (int section, int row)

@@ -19,6 +19,11 @@ namespace Xamarin.Tables
 	public partial class Resource
 	{
 		
+		Resource()
+		{
+			global::Android.Runtime.ResourceIdManager.UpdateIdValues ();
+		}
+		
 		public partial class Attribute
 		{
 			

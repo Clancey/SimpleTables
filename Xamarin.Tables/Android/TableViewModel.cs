@@ -66,10 +66,13 @@ namespace Xamarin.Tables
 			listView.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => {
 				ItemClicked(e.Position);
 			};
+			listView.LongClick += (object sender, View.LongClickEventArgs e) => {
+
+			};
 			this.sectionedListSeparator = sectionedListSeparatorLayout;
 		}
 
-		public void ItemClicked (int position)
+		public void ItemClicked (int position, bool isLongPress = false)
 		{
 			var sectionCount = NumberOfSections();
 			for(int sectionIndex = 0; sectionIndex < sectionCount; sectionIndex ++)
@@ -86,7 +89,10 @@ namespace Xamarin.Tables
 					var item = ItemFor(sectionIndex,position - 1);
 					if(item is Cell)
 						(item as Cell).Selected();
-					RowSelected(item);
+					if(isLongPress)
+						LongPressOnItem(item);
+					else
+						RowSelected(item);
 					return;
 				}
 				
@@ -94,9 +100,6 @@ namespace Xamarin.Tables
 				sectionIndex++;
 			}
 		}
-
-
-		
 		public override int Count
 		{
 			get 

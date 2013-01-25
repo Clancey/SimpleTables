@@ -18,6 +18,8 @@ namespace Xamarin.Tables
 		
 		public abstract void RowSelected(T item);
 		
+		public abstract void LongPressOnItem(T item);
+		
 		public abstract T ItemFor (int section, int row);
 		
 		public virtual ICell GetHeaderICell (int section)

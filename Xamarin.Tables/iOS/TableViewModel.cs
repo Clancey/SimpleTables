@@ -5,12 +5,33 @@ namespace Xamarin.Tables
 {
 	public abstract partial class TableViewModel <T> : UITableViewSource 
 	{
+		bool hasBoundLongTouch;
+		UITableView tv;
+		void bindLongTouch(UITableView tableview)
+		{
+			if (hasBoundLongTouch)
+				return;
+			hasBoundLongTouch = true;
+			var gesture = new UILongPressGestureRecognizer (LongPress);
+			gesture.MinimumPressDuration = 2;
+			tableview.AddGestureRecognizer (gesture);
+		}
+		public void LongPress(UILongPressGestureRecognizer gesture)
+		{
+			var point = gesture.LocationInView (tv);
+			var indexPath = tv.IndexPathForRowAtPoint (point);
+			if (indexPath == null)
+				return;
+			LongPressOnItem (ItemFor(indexPath.Section,indexPath.Row));
+		}
 		public override int RowsInSection (UITableView tableview, int section)
 		{
 			return RowsInSection (section);
 		}
+
 		public override int NumberOfSections (UITableView tableView)
 		{
+			bindLongTouch (tableView);
 			return NumberOfSections ();
 		}
 		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
