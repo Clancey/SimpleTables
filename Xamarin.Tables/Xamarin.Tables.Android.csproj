@@ -59,10 +59,10 @@
     <Compile Include="Android\GetCell\BoolCell.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="TableViewModel.cs" />
-    <Compile Include="Cell.cs" />
     <Compile Include="UINavigationController.cs" />
     <Compile Include="IFragmentSwitcher.cs" />
     <Compile Include="iViewController.cs" />
+    <Compile Include="Android\GetCell\Cell.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

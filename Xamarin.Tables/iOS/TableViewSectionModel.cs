@@ -14,7 +14,7 @@ namespace Xamarin.Tables
 		}
 		public TableViewSectionModel (UITableView tableview)
 		{
-
+			TableView = tableview;
 		}
 		void ReloadData()
 		{

@@ -10,6 +10,7 @@ namespace Xamarin.Tables
 		public virtual UITableViewCell GetCell (UITableView tv)
 		{
 			var cell = tv.DequeueReusableCell (Key) ?? new UITableViewCell (UITableViewCellStyle.Default, Key);
+			cell.TextLabel.Text = this.Caption;
 			return cell ;
 		}
 		public virtual void Selected (UITableView tableView, NSIndexPath path)

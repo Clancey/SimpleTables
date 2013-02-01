@@ -9,6 +9,10 @@ namespace Xamarin.Tables
 
 		public event GetCellEventHandler CellFor;
 
+		public event EventHandler<EventArg<T>> ItemSelected;
+
+		public event EventHandler<EventArg<T>> ItemLongPressed;
+
 		public abstract int RowsInSection (int section);
 		
 		public abstract int NumberOfSections ();
@@ -33,9 +37,17 @@ namespace Xamarin.Tables
 			return null;
 		}
 		
-		public abstract void RowSelected(T item);
+		public virtual void RowSelected(T item)
+		{
+			if(ItemSelected != null)
+				ItemSelected(this,new EventArg<T>(item));
+		}
 		
-		public abstract void LongPressOnItem(T item);
+		public virtual void LongPressOnItem(T item)
+		{
+			if (ItemLongPressed != null)
+				ItemLongPressed (this, new EventArg<T> (item));
+		}
 		
 		public abstract T ItemFor (int section, int row);
 		

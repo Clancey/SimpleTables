@@ -10,8 +10,6 @@ namespace Xamarin.Tables
 		{
 			get{return sections;}
 			set{
-				if(sections == value)
-					return;
 				sections = value;
 				ReloadData();
 			}

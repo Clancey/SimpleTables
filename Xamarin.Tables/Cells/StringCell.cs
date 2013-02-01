@@ -27,6 +27,7 @@ namespace Xamarin.Tables
 			this.Value = value;
 			Tapped += tapped;
 		}
+
 		
 		public event Action Tapped;
 		
