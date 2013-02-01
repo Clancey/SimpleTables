@@ -14,13 +14,14 @@
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AssemblyName>Xamarin.Tables.Android</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>False</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
+    <DefineConstants>DEBUG;Android;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
@@ -35,19 +36,20 @@
     <ConsolePause>False</ConsolePause>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <DefineConstants>Android;</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
+    <Reference Include="Mono.Android.Support.v13" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Android\ICell.cs" />
     <Compile Include="Android\TableViewModel.cs" />
     <Compile Include="EventArgs.cs" />
     <Compile Include="Cells\Cell.cs" />
-    <Compile Include="Android\GetCell\Cell.cs" />
     <Compile Include="TableViewSectionModel.cs" />
     <Compile Include="Section.cs" />
     <Compile Include="Android\TableViewSectionModel.cs" />
@@ -57,6 +59,10 @@
     <Compile Include="Android\GetCell\BoolCell.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="TableViewModel.cs" />
+    <Compile Include="Cell.cs" />
+    <Compile Include="UINavigationController.cs" />
+    <Compile Include="IFragmentSwitcher.cs" />
+    <Compile Include="iViewController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
@@ -65,6 +71,7 @@
     <Folder Include="Cells\" />
     <Folder Include="Android\GetCell\" />
     <Folder Include="Resources\drawable\" />
+    <Folder Include="Resources\anim\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -92,5 +99,10 @@
     <AndroidResource Include="Resources\drawable\dialog_disclosure.png" />
     <AndroidResource Include="Resources\drawable\dialog_expander_ic_minimized.9.png" />
     <AndroidResource Include="Resources\layout\dialog_onofffieldright.axml" />
+    <AndroidResource Include="Resources\layout\NavListView.axml" />
+    <AndroidResource Include="Resources\anim\slide_in_left.xml" />
+    <AndroidResource Include="Resources\anim\slide_in_right.xml" />
+    <AndroidResource Include="Resources\anim\slide_out_left.xml" />
+    <AndroidResource Include="Resources\anim\slide_out_right.xml" />
   </ItemGroup>
 </Project>

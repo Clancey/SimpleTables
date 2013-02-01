@@ -166,7 +166,6 @@ namespace Xamarin.Tables
 						return GetICell(sectionIndex,position - 1);
 					
 					position -= size;
-					sectionIndex++;
 				}
 				
 				return null;

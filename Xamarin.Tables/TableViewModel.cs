@@ -4,17 +4,34 @@ namespace Xamarin.Tables
 {
 	public abstract partial class TableViewModel <T>
 	{
+		
+		public delegate ICell GetCellEventHandler(T item);
+
+		public event GetCellEventHandler CellFor;
+
 		public abstract int RowsInSection (int section);
 		
 		public abstract int NumberOfSections ();
 		
-		public abstract int GetItemViewType (int section, int row);
-		
-		public abstract ICell GetICell (int section, int position);
-		
+		public virtual int GetItemViewType (int section, int row)
+		{
+			return 0;
+		}
+
+		public virtual ICell GetICell (int section, int row)
+		{
+			var item = ItemFor (section, row);
+			if (CellFor != null)
+				return CellFor (item);
+			return item  == null ? null : new StringCell(item.ToString());
+		}
+
 		public abstract string HeaderForSection(int section);
 		
-		public abstract string[] SectionIndexTitles ();
+		public virtual string[] SectionIndexTitles ()
+		{
+			return null;
+		}
 		
 		public abstract void RowSelected(T item);
 		

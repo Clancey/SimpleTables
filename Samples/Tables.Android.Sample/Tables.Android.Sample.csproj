@@ -88,6 +88,7 @@
     <AndroidResource Include="Resources\layout\dialog_textarea.xml" />
     <AndroidResource Include="Resources\layout\dialog_textfieldbelow.xml" />
     <AndroidResource Include="Resources\layout\dialog_textfieldright.xml" />
+    <AndroidResource Include="Resources\layout\NavListView.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

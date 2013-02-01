@@ -5,6 +5,10 @@ namespace Xamarin.Tables
 {
 	public abstract partial class TableViewModel <T> : UITableViewSource 
 	{
+		public TableViewModel ()
+		{
+			
+		}
 		bool hasBoundLongTouch;
 		UITableView tv;
 		void bindLongTouch(UITableView tableview)

@@ -19,10 +19,24 @@ namespace Tables.Sample
 	public partial class Resource
 	{
 		
+		Resource()
+		{
+			global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+		}
+		
 		public static void UpdateIdValues()
 		{
+			Xamarin.Tables.Resource.Animation.slide_in_left = Tables.Sample.Resource.Animation.slide_in_left;
+			Xamarin.Tables.Resource.Animation.slide_in_right = Tables.Sample.Resource.Animation.slide_in_right;
+			Xamarin.Tables.Resource.Animation.slide_out_left = Tables.Sample.Resource.Animation.slide_out_left;
+			Xamarin.Tables.Resource.Animation.slide_out_right = Tables.Sample.Resource.Animation.slide_out_right;
 			Xamarin.Tables.Resource.Drawable.dialog_disclosure = Tables.Sample.Resource.Drawable.dialog_disclosure;
 			Xamarin.Tables.Resource.Drawable.dialog_expander_ic_minimized = Tables.Sample.Resource.Drawable.dialog_expander_ic_minimized;
+			Xamarin.Tables.Resource.Id.LeftBtn = Tables.Sample.Resource.Id.LeftBtn;
+			Xamarin.Tables.Resource.Id.LeftButtonLayout = Tables.Sample.Resource.Id.LeftButtonLayout;
+			Xamarin.Tables.Resource.Id.LinearLayout01 = Tables.Sample.Resource.Id.LinearLayout01;
+			Xamarin.Tables.Resource.Id.RightBtn = Tables.Sample.Resource.Id.RightBtn;
+			Xamarin.Tables.Resource.Id.RightButtonLayout = Tables.Sample.Resource.Id.RightButtonLayout;
 			Xamarin.Tables.Resource.Id.dialog_BoolField = Tables.Sample.Resource.Id.dialog_BoolField;
 			Xamarin.Tables.Resource.Id.dialog_Button = Tables.Sample.Resource.Id.dialog_Button;
 			Xamarin.Tables.Resource.Id.dialog_DisclosureField = Tables.Sample.Resource.Id.dialog_DisclosureField;
@@ -36,7 +50,8 @@ namespace Tables.Sample
 			Xamarin.Tables.Resource.Id.dialog_Spinner = Tables.Sample.Resource.Id.dialog_Spinner;
 			Xamarin.Tables.Resource.Id.dialog_ValueField = Tables.Sample.Resource.Id.dialog_ValueField;
 			Xamarin.Tables.Resource.Id.iFormFieldValue = Tables.Sample.Resource.Id.iFormFieldValue;
-			Xamarin.Tables.Resource.Id.separator = Tables.Sample.Resource.Id.separator;
+			Xamarin.Tables.Resource.Id.navContent = Tables.Sample.Resource.Id.navContent;
+			Xamarin.Tables.Resource.Id.title = Tables.Sample.Resource.Id.title;
 			Xamarin.Tables.Resource.Layout.dialog_achievements = Tables.Sample.Resource.Layout.dialog_achievements;
 			Xamarin.Tables.Resource.Layout.dialog_boolfieldleft = Tables.Sample.Resource.Layout.dialog_boolfieldleft;
 			Xamarin.Tables.Resource.Layout.dialog_boolfieldright = Tables.Sample.Resource.Layout.dialog_boolfieldright;
@@ -56,7 +71,7 @@ namespace Tables.Sample
 			Xamarin.Tables.Resource.Layout.dialog_textarea = Tables.Sample.Resource.Layout.dialog_textarea;
 			Xamarin.Tables.Resource.Layout.dialog_textfieldbelow = Tables.Sample.Resource.Layout.dialog_textfieldbelow;
 			Xamarin.Tables.Resource.Layout.dialog_textfieldright = Tables.Sample.Resource.Layout.dialog_textfieldright;
-			Xamarin.Tables.Resource.Layout.SectionedListSeparator = Tables.Sample.Resource.Layout.SectionedListSeparator;
+			Xamarin.Tables.Resource.Layout.NavListView = Tables.Sample.Resource.Layout.NavListView;
 			Xamarin.Tables.Resource.String.library_name = Tables.Sample.Resource.String.library_name;
 		}
 		
@@ -87,6 +102,21 @@ namespace Tables.Sample
 		
 		public partial class Id
 		{
+			
+			// aapt resource value: 0x7f050010
+			public const int LeftBtn = 2131034128;
+			
+			// aapt resource value: 0x7f05000f
+			public const int LeftButtonLayout = 2131034127;
+			
+			// aapt resource value: 0x7f05000e
+			public const int LinearLayout01 = 2131034126;
+			
+			// aapt resource value: 0x7f050013
+			public const int RightBtn = 2131034131;
+			
+			// aapt resource value: 0x7f050012
+			public const int RightButtonLayout = 2131034130;
 			
 			// aapt resource value: 0x7f050002
 			public const int dialog_BoolField = 2131034114;
@@ -130,8 +160,14 @@ namespace Tables.Sample
 			// aapt resource value: 0x7f05000d
 			public const int myButton = 2131034125;
 			
-			// aapt resource value: 0x7f05000e
-			public const int separator = 2131034126;
+			// aapt resource value: 0x7f050014
+			public const int navContent = 2131034132;
+			
+			// aapt resource value: 0x7f050015
+			public const int separator = 2131034133;
+			
+			// aapt resource value: 0x7f050011
+			public const int title = 2131034129;
 			
 			private Id()
 			{
@@ -202,7 +238,10 @@ namespace Tables.Sample
 			public const int Main = 2130903059;
 			
 			// aapt resource value: 0x7f030014
-			public const int SectionedListSeparator = 2130903060;
+			public const int NavListView = 2130903060;
+			
+			// aapt resource value: 0x7f030015
+			public const int SectionedListSeparator = 2130903061;
 			
 			private Layout()
 			{
@@ -212,14 +251,14 @@ namespace Tables.Sample
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040002
-			public const int app_name = 2130968578;
-			
 			// aapt resource value: 0x7f040001
-			public const int hello = 2130968577;
+			public const int app_name = 2130968577;
 			
 			// aapt resource value: 0x7f040000
-			public const int library_name = 2130968576;
+			public const int hello = 2130968576;
+			
+			// aapt resource value: 0x7f040002
+			public const int library_name = 2130968578;
 			
 			private String()
 			{

@@ -21,7 +21,27 @@ namespace Xamarin.Tables
 		
 		Resource()
 		{
-			global::Android.Runtime.ResourceIdManager.UpdateIdValues ();
+			global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+		}
+		
+		public partial class Animation
+		{
+			
+			// aapt resource value: 0x7f040000
+			public static int slide_in_left = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public static int slide_in_right = 2130968577;
+			
+			// aapt resource value: 0x7f040002
+			public static int slide_out_left = 2130968578;
+			
+			// aapt resource value: 0x7f040003
+			public static int slide_out_right = 2130968579;
+			
+			private Animation()
+			{
+			}
 		}
 		
 		public partial class Attribute
@@ -49,44 +69,65 @@ namespace Xamarin.Tables
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050002
-			public static int dialog_BoolField = 2131034114;
+			// aapt resource value: 0x7f06000f
+			public static int LeftBtn = 2131099663;
 			
-			// aapt resource value: 0x7f050003
-			public static int dialog_Button = 2131034115;
+			// aapt resource value: 0x7f06000e
+			public static int LeftButtonLayout = 2131099662;
 			
-			// aapt resource value: 0x7f050009
-			public static int dialog_DisclosureField = 2131034121;
+			// aapt resource value: 0x7f06000d
+			public static int LinearLayout01 = 2131099661;
 			
-			// aapt resource value: 0x7f050005
-			public static int dialog_ImageLeft = 2131034117;
+			// aapt resource value: 0x7f060012
+			public static int RightBtn = 2131099666;
 			
-			// aapt resource value: 0x7f050007
-			public static int dialog_ImageRight = 2131034119;
+			// aapt resource value: 0x7f060011
+			public static int RightButtonLayout = 2131099665;
 			
-			// aapt resource value: 0x7f050000
-			public static int dialog_LabelField = 2131034112;
+			// aapt resource value: 0x7f060002
+			public static int dialog_BoolField = 2131099650;
 			
-			// aapt resource value: 0x7f050001
-			public static int dialog_LabelSubtextField = 2131034113;
+			// aapt resource value: 0x7f060003
+			public static int dialog_Button = 2131099651;
 			
-			// aapt resource value: 0x7f050008
-			public static int dialog_Panel = 2131034120;
+			// aapt resource value: 0x7f060009
+			public static int dialog_DisclosureField = 2131099657;
 			
-			// aapt resource value: 0x7f05000a
-			public static int dialog_RadioButtonList = 2131034122;
+			// aapt resource value: 0x7f060005
+			public static int dialog_ImageLeft = 2131099653;
 			
-			// aapt resource value: 0x7f050006
-			public static int dialog_SliderField = 2131034118;
+			// aapt resource value: 0x7f060007
+			public static int dialog_ImageRight = 2131099655;
 			
-			// aapt resource value: 0x7f05000b
-			public static int dialog_Spinner = 2131034123;
+			// aapt resource value: 0x7f060000
+			public static int dialog_LabelField = 2131099648;
 			
-			// aapt resource value: 0x7f050004
-			public static int dialog_ValueField = 2131034116;
+			// aapt resource value: 0x7f060001
+			public static int dialog_LabelSubtextField = 2131099649;
 			
-			// aapt resource value: 0x7f05000c
-			public static int iFormFieldValue = 2131034124;
+			// aapt resource value: 0x7f060008
+			public static int dialog_Panel = 2131099656;
+			
+			// aapt resource value: 0x7f06000a
+			public static int dialog_RadioButtonList = 2131099658;
+			
+			// aapt resource value: 0x7f060006
+			public static int dialog_SliderField = 2131099654;
+			
+			// aapt resource value: 0x7f06000b
+			public static int dialog_Spinner = 2131099659;
+			
+			// aapt resource value: 0x7f060004
+			public static int dialog_ValueField = 2131099652;
+			
+			// aapt resource value: 0x7f06000c
+			public static int iFormFieldValue = 2131099660;
+			
+			// aapt resource value: 0x7f060013
+			public static int navContent = 2131099667;
+			
+			// aapt resource value: 0x7f060010
+			public static int title = 2131099664;
 			
 			private Id()
 			{
@@ -153,6 +194,9 @@ namespace Xamarin.Tables
 			// aapt resource value: 0x7f030012
 			public static int dialog_textfieldright = 2130903058;
 			
+			// aapt resource value: 0x7f030013
+			public static int NavListView = 2130903059;
+			
 			private Layout()
 			{
 			}
@@ -161,8 +205,8 @@ namespace Xamarin.Tables
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040000
-			public static int library_name = 2130968576;
+			// aapt resource value: 0x7f050000
+			public static int library_name = 2131034112;
 			
 			private String()
 			{
