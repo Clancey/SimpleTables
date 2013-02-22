@@ -44,6 +44,10 @@ namespace Xamarin.Tables
 				return false;
 			return Caption.IndexOf (text, StringComparison.CurrentCultureIgnoreCase) != -1;
 		}
+		public virtual void Selected()
+		{
+
+		}
 	}
 }
 

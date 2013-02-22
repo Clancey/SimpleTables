@@ -30,6 +30,7 @@ namespace Tables.Sample
 		{
 			return  new List<Section> (){
 				new Section ("Element API"){
+					new RadioCell("Test Radio",TestEnum.Value1),
 					new StringCell ("iPhone Settings Sample"),
 					new StringCell ("Dynamically load data"),
 					new StringCell ("Add/Remove demo"),
@@ -40,6 +41,7 @@ namespace Tables.Sample
 					new StringCell ("Advanced Editing Support"),
 					new StringCell ("Owner Drawn Element"),
 				},
+
 				new Section ("Container features"){
 					new StringCell ("Pull to Refresh"),
 					new StringCell ("Headers and Footers"),

@@ -55,6 +55,7 @@
     <Compile Include="..\ViewModels\SettingsViewModel.cs">
       <Link>UI\ViewModels\SettingsViewModel.cs</Link>
     </Compile>
+    <Compile Include="Models\TestEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -95,6 +96,7 @@
     <Folder Include="UI\" />
     <Folder Include="UI\Activities\" />
     <Folder Include="UI\ViewModels\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Xamarin.Tables\Xamarin.Tables.Android.csproj">

@@ -19,6 +19,7 @@ namespace Xamarin.Tables
 			var gesture = new UILongPressGestureRecognizer (LongPress);
 			gesture.MinimumPressDuration = 2;
 			tableview.AddGestureRecognizer (gesture);
+			tv = tableview;
 		}
 		public void LongPress(UILongPressGestureRecognizer gesture)
 		{

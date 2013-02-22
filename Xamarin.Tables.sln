@@ -93,6 +93,6 @@ Global
 		{13F41C64-9229-42CE-9603-0D623FA5901A} = {44E3A39D-9A1F-4386-A48B-07F207D9B963}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Xamarin.Tables\Xamarin.Tables.iOS.csproj
+		StartupItem = Samples\Tables.iOS.Sample\Tables.iOS.Sample.csproj
 	EndGlobalSection
 EndGlobal

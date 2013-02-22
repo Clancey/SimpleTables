@@ -11,6 +11,7 @@
     <RootNamespace>Xamarin.Tables</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>Xamarin.Tables.iOS</AssemblyName>
+    <newfilesearch>OnLoad</newfilesearch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -59,5 +60,149 @@
     <Compile Include="iOS\TableViewSectionModel.cs" />
     <Compile Include="TableViewModel.cs" />
     <Compile Include="iViewController.cs" />
+    <Compile Include="Cells\EntryCell.cs" />
+    <Compile Include="Cells\RadioCell.cs" />
+    <Compile Include="Cells\RadioCellOptions.cs" />
+    <Compile Include="iOS\GetCell\RadioCell.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IFragmentSwitcher.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="TableViewCellModel.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="TableViewListModel.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="UINavigationController.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\AboutResources.txt">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\Resource.designer.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\anim\slide_in_left.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\anim\slide_in_right.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\anim\slide_out_left.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\anim\slide_out_right.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\drawable\back.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\drawable\dialog_disclosure.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\drawable\dialog_expander_ic_minimized.9.png">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\NavListView.axml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\SectionedListSeparator.axml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\dialog_achievements.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\dialog_boolfieldleft.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\dialog_boolfieldright.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\dialog_boolfieldsubleft.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\dialog_boolfieldsubright.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\dialog_button.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\dialog_datefield.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\dialog_fieldsetlabel.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\dialog_floatimage.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\dialog_labelfieldbelow.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\dialog_labelfieldright.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\dialog_onofffieldright.axml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\dialog_panel.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\dialog_root.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\dialog_selectlist.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\dialog_selectlistfield.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\dialog_textarea.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\dialog_textfieldbelow.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\dialog_textfieldright.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\main.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\values\Strings.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Android\ICell.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Android\TableViewCellModel.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Android\TableViewListModel.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Android\TableViewModel.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Android\TableViewSectionModel.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Android\GetCell\BoolCell.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Android\GetCell\Cell.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Android\GetCell\StringCell.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Resources\layout\anav.xml">
+      <Visible>False</Visible>
+    </None>
+    <None Include="Utilities\ViewExtensions.cs">
+      <Visible>False</Visible>
+    </None>
   </ItemGroup>
 </Project>

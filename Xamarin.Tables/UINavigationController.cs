@@ -12,31 +12,67 @@ namespace Xamarin.Tables
 	{
 		public List<Fragment> ControllerStack = new List<Fragment> ();
 		public IFragmentSwitcher Parent;
-		public Button RightButton;
-		public Button LeftButton;
+		protected Button rightButton;
+		public Button RightButton
+		{
+			get{ return rightButton;}
+			set{
+				if(value == null){
+					rightButton.RemoveFromParent();
+					return;
+				}else if(rightButton != value)
+					rightButton = value;
+				if(rightButton.Parent == null)
+					RightButtonLayout.AddView(rightButton);
+			}
+		}
+		protected Button leftButton;
+		public Button LeftButton
+		{
+			get{ return leftButton;}
+			set{
+				if(value == null)
+				{
+					leftButton.RemoveFromParent();
+					return;
+				}
+				else if(leftButton != value)
+					leftButton = value;
+				if(leftButton.Parent == null)
+					LeftButtonLayout.AddView(leftButton);
+			}
+		}
+
 		protected TextView TitleTv;
-		LinearLayout LeftButtonLayout;
-		LinearLayout RightButtonLayout;
+		protected LinearLayout LeftButtonLayout;
+		protected LinearLayout RightButtonLayout;
 		public UINavigationController() : base()
 		{
 
 		}
+		public override void OnCreate (Android.OS.Bundle savedInstanceState)
+		{
+			base.OnCreate (savedInstanceState);
+			if(ControllerStack.Count > 1)
+				SwitchContent (CurrentFragment, false);
+		}
 		public override View OnCreateView (Android.Views.LayoutInflater inflater, Android.Views.ViewGroup container, Android.OS.Bundle savedInstanceState)
 		{
-			View v = inflater.Inflate (Resource.Layout.NavListView, container, false);
-			//ListView = v.FindViewById<ListView> (Resource.Id.listView);
-			RightButton = v.FindViewById<Button> (Resource.Id.RightBtn);
-			LeftButton = v.FindViewById<Button> (Resource.Id.LeftBtn);
-			LeftButton.SetTextColor (Android.Graphics.Color.White);
-			LeftButton.Click += LeftClicked;
+			View v = inflater.Inflate (Resource.Layout.anav, container, false);
+			LeftButtonLayout = v.FindViewById<LinearLayout> (Resource.Id.uinavigationLeftButtonLayout);
+			RightButtonLayout = v.FindViewById<LinearLayout> (Resource.Id.uinavigationRightButtonLayout);
+			rightButton = v.FindViewById<Button> (Resource.Id.uinavigationrightbtn);
+			leftButton = v.FindViewById<Button> (Resource.Id.uinavigationleftbtn);
+			leftButton.SetTextColor (Android.Graphics.Color.White);
+			leftButton.Click += LeftClicked;
 			TitleTv = v.FindViewById<TextView> (Resource.Id.title);
 			var curFrag = CurrentFragment;
 			if (curFrag != null) {
 				try{
 					if(!curFrag.IsAdded)
-						FragmentManager.BeginTransaction ().Add (Resource.Id.navContent, CurrentFragment).Commit ();
+						FragmentManager.BeginTransaction ().Add (Resource.Id.uinavigationcontent, CurrentFragment).Commit ();
 					else
-						FragmentManager.BeginTransaction ().Replace (Resource.Id.navContent, CurrentFragment).Commit ();
+						FragmentManager.BeginTransaction ().Replace (Resource.Id.uinavigationcontent, CurrentFragment).Commit ();
 						
 				if(curFrag is IViewController)
 					TitleTv.Text = ((IViewController)curFrag).Title;
@@ -67,18 +103,20 @@ namespace Xamarin.Tables
 		}
 		public void SetLeftButton()
 		{
+			RightButton = null;
 			if(ControllerStack.Count > 1)
 			{
 				//LeftButton.SetBackgroundResource(Resource.Drawable.back);
+				LeftButton = leftButton;
 				LeftButton.Text = "Back";
 
 			} else {
 				//LeftButton.SetBackgroundResource(Resource.Drawable.menuButton);
-				LeftButton.Text = "";
+				LeftButton = null;;
 			}
 		}
 
-		void LeftClicked (object sender, EventArgs e)
+		public void LeftClicked (object sender, EventArgs e)
 		{
 			if (ControllerStack.Count > 1) {
 				PopViewController (true);
@@ -113,15 +151,17 @@ namespace Xamarin.Tables
 				return ControllerStack.LastOrDefault ();
 			}
 		}
-		public void PushViewController(Fragment fragment,bool animated)
+		public virtual void PushViewController(Fragment fragment,bool animated)
 		{
 			ControllerStack.Add (fragment);
 			if (fragment is IViewController)
 				((IViewController)fragment).NavigationController = this;
 			SwitchContent (CurrentFragment,animated);
 		}
-		private void SwitchContent (Fragment fragment, bool animated, bool removed = false)
+		protected virtual void SwitchContent (Fragment fragment, bool animated, bool removed = false)
 		{
+			if (fragment == null)
+				return;
 			var ft = FragmentManager.BeginTransaction ();
 			if (animated) {
 				if(removed)
@@ -131,7 +171,7 @@ namespace Xamarin.Tables
 				
 			}
 			try{
-			ft.Replace (Resource.Id.navContent, fragment).Commit ();
+			ft.Replace (Resource.Id.uinavigationcontent, fragment).Commit ();
 			}
 			catch(Exception ex)
 			{
@@ -142,7 +182,7 @@ namespace Xamarin.Tables
 				TitleTv.Text = ((IViewController)fragment).Title;
 			}
 		}
-		public bool PopViewController(bool animated)
+		public virtual bool PopViewController(bool animated)
 		{
 			if (ControllerStack.Count <= 1)
 				return false;

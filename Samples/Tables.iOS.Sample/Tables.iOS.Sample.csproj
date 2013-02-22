@@ -111,6 +111,7 @@
     <Compile Include="..\ViewModels\SettingsViewModel.cs">
       <Link>UI\ViewModels\SettingsViewModel.cs</Link>
     </Compile>
+    <Compile Include="Models\TestEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Xamarin.Tables\Xamarin.Tables.iOS.csproj">

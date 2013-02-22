@@ -36,10 +36,6 @@ namespace Xamarin.Tables
 			view.SetBackgroundColor(BackGroundColor);
 			return view;
 		}
-		public virtual void Selected() 
-		{
-
-		}
 	}
 }
 

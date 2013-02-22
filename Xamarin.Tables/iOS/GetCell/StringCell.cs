@@ -12,9 +12,10 @@ namespace Xamarin.Tables
 
 		public override UITableViewCell GetCell (UITableView tv)
 		{
-			var cell = tv.DequeueReusableCell (Value == null ? skey : skeyvalue);
+			var key = Value == null ? skey : skeyvalue;
+			var cell = tv.DequeueReusableCell (key);
 			if (cell == null){
-				cell = new UITableViewCell (UITableViewCellStyle.Value1, skey);
+				cell = new UITableViewCell (Value == null ? UITableViewCellStyle.Default : UITableViewCellStyle.Value1, key);
 				cell.SelectionStyle = (Tapped != null) ? UITableViewCellSelectionStyle.Blue : UITableViewCellSelectionStyle.None;
 			}
 			cell.Accessory = UITableViewCellAccessory.None;
