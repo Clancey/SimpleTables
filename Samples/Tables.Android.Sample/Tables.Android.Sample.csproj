@@ -98,10 +98,4 @@
     <Folder Include="UI\ViewModels\" />
     <Folder Include="Models\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Xamarin.Tables\Xamarin.Tables.Android.csproj">
-      <Project>{040CA4CF-74E9-419B-A534-EE761D24C8FA}</Project>
-      <Name>Xamarin.Tables.Android</Name>
-    </ProjectReference>
-  </ItemGroup>
 </Project>
