@@ -7,7 +7,7 @@ namespace Xamarin.Tables
 	{
 		protected List<T> Items;
 				
-		public event EventHandler<EventArg<T>> RowTapped;
+		public event EventHandler<EventArgs<T>> RowTapped;
 		#region implemented abstract members of TableViewModel
 
 		public override int RowsInSection (int section)
@@ -44,7 +44,7 @@ namespace Xamarin.Tables
 		public override void RowSelected (T item)
 		{
 			if (RowTapped != null)
-				RowTapped (this, new EventArg<T> (item));
+				RowTapped (this, new EventArgs<T> (item));
 		}
 		#endregion
 	}

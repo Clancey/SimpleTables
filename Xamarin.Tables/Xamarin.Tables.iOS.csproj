@@ -64,6 +64,15 @@
     <Compile Include="Cells\RadioCell.cs" />
     <Compile Include="Cells\RadioCellOptions.cs" />
     <Compile Include="iOS\GetCell\RadioCell.cs" />
+    <Compile Include="IndexPath.cs" />
+    <Compile Include="iOS\ICellSizing.cs" />
+    <Compile Include="Cells\ViewCell.cs" />
+    <Compile Include="iOS\GetCell\ViewCell.cs" />
+    <Compile Include="Cells\StyledStringCell.cs" />
+    <Compile Include="iOS\GetCell\StyledStringCell.cs" />
+    <Compile Include="IImageUpdated.cs" />
+    <Compile Include="Cells\StyledMultilineCell.cs" />
+    <Compile Include="iOS\GetCell\StyledMultilineCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="IFragmentSwitcher.cs">

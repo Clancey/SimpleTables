@@ -2,13 +2,13 @@ using System;
 
 namespace Xamarin.Tables
 {
-	public class EventArg<T> : EventArgs
+	public class EventArgs<T> : EventArgs
 	{
 		// Property variable
 		private readonly T p_EventData;
 		
 		// Constructor
-		public EventArg(T data)
+		public EventArgs(T data)
 		{
 			p_EventData = data;
 		}
@@ -19,5 +19,6 @@ namespace Xamarin.Tables
 			get { return p_EventData; }
 		}
 	}
+
 }
 

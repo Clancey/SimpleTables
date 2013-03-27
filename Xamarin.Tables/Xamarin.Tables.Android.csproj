@@ -77,6 +77,11 @@
     <Compile Include="iViewController.cs" />
     <Compile Include="UINavigationController.cs" />
     <Compile Include="Utilities\ViewExtensions.cs" />
+    <Compile Include="IImageUpdated.cs" />
+    <Compile Include="IndexPath.cs" />
+    <Compile Include="Cells\StyledMultilineCell.cs" />
+    <Compile Include="Cells\StyledStringCell.cs" />
+    <Compile Include="Cells\ViewCell.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
@@ -124,6 +129,18 @@
       <Visible>False</Visible>
     </None>
     <None Include="iOS\GetCell\RadioCell.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="iOS\ICellSizing.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="iOS\GetCell\StyledMultilineCell.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="iOS\GetCell\StyledStringCell.cs">
+      <Visible>False</Visible>
+    </None>
+    <None Include="iOS\GetCell\ViewCell.cs">
       <Visible>False</Visible>
     </None>
   </ItemGroup>

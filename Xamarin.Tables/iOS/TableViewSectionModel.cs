@@ -6,21 +6,31 @@ namespace Xamarin.Tables
 {
 	public partial class TableViewSectionModel
 	{
-		UITableView TableView;
+		UITableView tableView;
+
+		public UITableView TableView {
+			get {
+				return tableView;
+			}
+			set {
+				tableView = value;
+			}
+		}
+
 		public TableViewSectionModel (UITableView tableview, List<Section> sections) 
 		{
-			TableView = tableview;
+			this.tableView = tableview;
 			Sections = sections ?? new List<Section> ();
 		}
 		public TableViewSectionModel (UITableView tableview)
 		{
-			TableView = tableview;
+			this.tableView = tableview;
 		}
 		void ReloadData()
 		{
-			if (TableView == null)
+			if (tableView == null)
 				return;
-			TableView.ReloadData ();
+			tableView.ReloadData ();
 		}
 	}
 }

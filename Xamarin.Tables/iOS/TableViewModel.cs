@@ -17,7 +17,6 @@ namespace Xamarin.Tables
 				return;
 			hasBoundLongTouch = true;
 			var gesture = new UILongPressGestureRecognizer (LongPress);
-			gesture.MinimumPressDuration = 2;
 			tableview.AddGestureRecognizer (gesture);
 			tv = tableview;
 		}
@@ -33,7 +32,6 @@ namespace Xamarin.Tables
 		{
 			return RowsInSection (section);
 		}
-
 		public override int NumberOfSections (UITableView tableView)
 		{
 			bindLongTouch (tableView);
