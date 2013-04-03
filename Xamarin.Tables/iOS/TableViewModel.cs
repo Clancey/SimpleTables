@@ -39,7 +39,10 @@ namespace Xamarin.Tables
 		}
 		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
 		{
-			return GetICell (indexPath.Section, indexPath.Row).GetCell(tableView);
+			var icell = GetICell (indexPath.Section, indexPath.Row);
+			if(icell == null)
+				return null;
+			return icell.GetCell(tableView);
 		}
 		public override void RowSelected (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
 		{
