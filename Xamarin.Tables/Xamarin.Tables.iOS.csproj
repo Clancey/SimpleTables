@@ -73,6 +73,8 @@
     <Compile Include="IImageUpdated.cs" />
     <Compile Include="Cells\StyledMultilineCell.cs" />
     <Compile Include="iOS\GetCell\StyledMultilineCell.cs" />
+    <Compile Include="CollapsableTableViewModal.cs" />
+    <Compile Include="iOS\CollapsableTableViewModal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="IFragmentSwitcher.cs">

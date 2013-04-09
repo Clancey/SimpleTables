@@ -10,7 +10,7 @@ namespace Xamarin.Tables
 			
 		}
 		bool hasBoundLongTouch;
-		UITableView tv;
+		protected UITableView tv;
 		void bindLongTouch(UITableView tableview)
 		{
 			if (hasBoundLongTouch)
