@@ -5,8 +5,10 @@ namespace Xamarin.Tables
 	public abstract partial class TableViewModel <T>
 	{
 		public delegate ICell GetCellEventHandler(T item);
+		public delegate ICell GetHeaderCellEventHandler(string header);
 
 		public event GetCellEventHandler CellFor;
+		public event GetHeaderCellEventHandler CellForHeader;
 
 		public event EventHandler<EventArgs<T>> ItemSelected;
 
@@ -52,6 +54,8 @@ namespace Xamarin.Tables
 		
 		public virtual ICell GetHeaderICell (int section)
 		{
+			if (CellForHeader != null)
+				return CellForHeader(HeaderForSection(section));
 			return null;
 		}
 	}
