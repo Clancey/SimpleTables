@@ -48,6 +48,10 @@ namespace Xamarin.Tables
 			collapsed[section] = state;
 			ReloadData(state,section,animate);
 		}
+		public void SetDefaultState(int section,bool state)
+		{
+			collapsed[section] = state;
+		}
 		public void ToggleState(int section)
 		{
 			SetCollapsed(section,!IsCollapsed(section));

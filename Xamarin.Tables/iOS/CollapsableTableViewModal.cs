@@ -35,13 +35,21 @@ namespace Xamarin.Tables
 
 		void BeginAnimation()
 		{
-			
-			tv.BeginUpdates();
+			try{
+				tv.BeginUpdates();
+			}
+			catch(Exception ex) {
+				Console.WriteLine (ex);
+			}
 		}
 		void EndAnimation()
 		{
-			
-			tv.EndUpdates();
+			try{
+				tv.EndUpdates();
+			}
+			catch(Exception ex) {
+				Console.WriteLine (ex);
+			}
 		}
 
 	}
