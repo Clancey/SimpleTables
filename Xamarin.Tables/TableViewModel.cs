@@ -27,8 +27,10 @@ namespace Xamarin.Tables
 		{
 			var item = ItemFor (section, row);
 			if (CellFor != null)
-				return CellFor (item);
-			return item  == null ? null : new StringCell(item.ToString());
+			{
+				return CellFor(item) ?? new StringCell("");
+			}
+			return  new StringCell(item == null ? ""  : item.ToString());
 		}
 
 		public abstract string HeaderForSection(int section);
