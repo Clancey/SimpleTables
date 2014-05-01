@@ -1,5 +1,6 @@
 using System;
 using MonoTouch.UIKit;
+using System.Drawing;
 
 namespace Xamarin.Tables
 {
@@ -23,6 +24,11 @@ namespace Xamarin.Tables
 		public void LongPress(UILongPressGestureRecognizer gesture)
 		{
 			var point = gesture.LocationInView (tv);
+			LongPress (point);
+		}
+
+		public void LongPress(PointF point)
+		{
 			var indexPath = tv.IndexPathForRowAtPoint (point);
 			if (indexPath == null)
 				return;
@@ -49,6 +55,7 @@ namespace Xamarin.Tables
 			var item = ItemFor (indexPath.Section, indexPath.Row);
 			if (item is Cell)
 				(item as Cell).Selected (tableView, indexPath);
+			tv.DeselectRow (indexPath, true);
 			RowSelected (item);
 		}	
 		
@@ -62,12 +69,28 @@ namespace Xamarin.Tables
 		{
 			return HeaderForSection(section);
 		}
+
+		public override bool RespondsToSelector (MonoTouch.ObjCRuntime.Selector sel)
+		{
+			if (sel.Name == "tableView:viewForHeaderInSection:") {
+				return GetViewForHeader (tv, 0) != null;
+			}
+			return base.RespondsToSelector (sel);
+
+		}
+
 		public override UIView GetViewForHeader (UITableView tableView, int section)
 		{
 			var header = GetHeaderICell (section);
 			if (header == null)
 				return null;
 			return header.GetCell(tableView);
+		}
+
+		public void ReloadData()
+		{
+			if (tv != null)
+				tv.ReloadData ();
 		}
 	}
 }
