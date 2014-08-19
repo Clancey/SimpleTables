@@ -1,6 +1,6 @@
 using System;
-using MonoTouch.UIKit;
-using MonoTouch.Foundation;
+using UIKit;
+using Foundation;
 
 namespace Xamarin.Tables
 {
@@ -8,7 +8,7 @@ namespace Xamarin.Tables
 	{
 		
 		static NSString skeyvalue = new NSString ("StringElementValue");
-		public override MonoTouch.UIKit.UITableViewCell GetCell (MonoTouch.UIKit.UITableView tv)
+		public override UIKit.UITableViewCell GetCell (UIKit.UITableView tv)
 		{
 			if(selectedIndex < Options.Length)
 				Detail = Options[selectedIndex].Value;

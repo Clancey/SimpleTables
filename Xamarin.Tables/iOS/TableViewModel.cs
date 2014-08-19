@@ -1,6 +1,6 @@
 using System;
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
+using CoreGraphics;
 
 namespace Xamarin.Tables
 {
@@ -27,30 +27,30 @@ namespace Xamarin.Tables
 			LongPress (point);
 		}
 
-		public void LongPress(PointF point)
+		public void LongPress(CGPoint point)
 		{
 			var indexPath = tv.IndexPathForRowAtPoint (point);
 			if (indexPath == null)
 				return;
 			LongPressOnItem (ItemFor(indexPath.Section,indexPath.Row));
 		}
-		public override int RowsInSection (UITableView tableview, int section)
+		public override nint RowsInSection (UITableView tableview, nint section)
 		{
-			return RowsInSection (section);
+			return (nint)RowsInSection ((int)section);
 		}
-		public override int NumberOfSections (UITableView tableView)
+		public override nint NumberOfSections (UITableView tableView)
 		{
 			bindLongTouch (tableView);
 			return NumberOfSections ();
 		}
-		public override UITableViewCell GetCell (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+		public override UITableViewCell GetCell (UITableView tableView, Foundation.NSIndexPath indexPath)
 		{
 			var icell = GetICell (indexPath.Section, indexPath.Row);
 			if(icell == null)
 				return null;
 			return icell.GetCell(tableView);
 		}
-		public override void RowSelected (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+		public override void RowSelected (UITableView tableView, Foundation.NSIndexPath indexPath)
 		{
 			var item = ItemFor (indexPath.Section, indexPath.Row);
 			if (item is Cell)
@@ -65,12 +65,12 @@ namespace Xamarin.Tables
 		}
 		
 		
-		public override string TitleForHeader (UITableView tableView, int section)
+		public override string TitleForHeader (UITableView tableView, nint section)
 		{
-			return HeaderForSection(section);
+			return HeaderForSection((int)section);
 		}
 
-		public override bool RespondsToSelector (MonoTouch.ObjCRuntime.Selector sel)
+		public override bool RespondsToSelector (ObjCRuntime.Selector sel)
 		{
 			if (sel.Name == "tableView:viewForHeaderInSection:") {
 				return GetViewForHeader (tv, 0) != null;
@@ -79,9 +79,9 @@ namespace Xamarin.Tables
 
 		}
 
-		public override UIView GetViewForHeader (UITableView tableView, int section)
+		public override UIView GetViewForHeader (UITableView tableView, nint section)
 		{
-			var header = GetHeaderICell (section);
+			var header = GetHeaderICell ((int)section);
 			if (header == null)
 				return null;
 			return header.GetCell(tableView);

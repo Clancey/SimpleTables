@@ -1,7 +1,7 @@
 using System;
-using MonoTouch.UIKit;
+using UIKit;
 using System.Collections.Generic;
-using MonoTouch.Foundation;
+using Foundation;
 
 namespace Xamarin.Tables
 {
@@ -10,11 +10,11 @@ namespace Xamarin.Tables
 		public CollapsableTableViewModal ()
 		{
 		}
-		public override int RowsInSection (UITableView tableview, int section)
+		public override nint RowsInSection (UITableView tableview, nint section)
 		{
-			if(IsCollapsed(section))
+			if(IsCollapsed((int)section))
 				return 0;
-			return RowsInSection (section);
+			return RowsInSection ((int)section);
 		}
 		void ReloadData(bool collapsed,int section, bool animated)
 		{

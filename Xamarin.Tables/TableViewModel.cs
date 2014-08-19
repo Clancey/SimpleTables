@@ -17,7 +17,7 @@ namespace Xamarin.Tables
 		public abstract int RowsInSection (int section);
 
 		public abstract int NumberOfSections ();
-		
+
 		public virtual int GetItemViewType (int section, int row)
 		{
 			return 0;

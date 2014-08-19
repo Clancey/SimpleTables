@@ -1,7 +1,7 @@
 using System;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
-using System.Drawing;
+using Foundation;
+using UIKit;
+using CoreGraphics;
 
 namespace Xamarin.Tables
 {
@@ -104,7 +104,7 @@ namespace Xamarin.Tables
 				frame.Width -= ImageSpace+Padding;
 				label.Frame = frame;
 				
-				button.Frame = new RectangleF (full.Width-ImageSpace, -3, ImageSpace, 48);
+				button.Frame = new CGRect (full.Width-ImageSpace, -3, ImageSpace, 48);
 			}
 			
 			public void UpdateFrom (BaseBooleanImageCell newParent)
