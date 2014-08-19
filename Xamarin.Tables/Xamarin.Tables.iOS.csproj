@@ -75,7 +75,6 @@
     <Compile Include="iOS\GetCell\StyledMultilineCell.cs" />
     <Compile Include="CollapsableTableViewModal.cs" />
     <Compile Include="iOS\CollapsableTableViewModal.cs" />
-    <Compile Include="Math.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="IFragmentSwitcher.cs">

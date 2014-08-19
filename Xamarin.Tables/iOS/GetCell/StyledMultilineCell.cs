@@ -20,7 +20,7 @@ namespace Xamarin.Tables
 			var font = Font ?? UIFont.SystemFontOfSize (14);
 			var height = tableView.StringSize (Caption, font, size, LineBreakMode).Height;
 			height *= 1.5f;
-			return Math.Max(44,height);
+			return NMath.Max(44,height);
 		}
 	}
 
