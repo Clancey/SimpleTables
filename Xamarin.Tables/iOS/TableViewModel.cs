@@ -12,12 +12,13 @@ namespace Xamarin.Tables
 		}
 		bool hasBoundLongTouch;
 		protected UITableView tv;
+		UILongPressGestureRecognizer gesture;
 		void bindLongTouch(UITableView tableview)
 		{
 			if (hasBoundLongTouch)
 				return;
 			hasBoundLongTouch = true;
-			var gesture = new UILongPressGestureRecognizer (LongPress);
+			gesture = new UILongPressGestureRecognizer (LongPress);
 			tableview.AddGestureRecognizer (gesture);
 			tv = tableview;
 		}
@@ -92,6 +93,30 @@ namespace Xamarin.Tables
 			if (tv != null)
 				tv.ReloadData ();
 		}
+
+		public virtual void ClearEvents()
+		{
+			if (gesture != null) {
+				tv.RemoveGestureRecognizer (gesture);
+				gesture = null;
+				tv = null;
+				hasBoundLongTouch = false;
+			}
+
+			foreach (var d in CellFor.GetInvocationList())
+				CellFor -= (GetCellEventHandler)d;
+
+			foreach (var d in CellForHeader.GetInvocationList())
+				CellForHeader -= (GetHeaderCellEventHandler)d;
+
+			foreach (var d in ItemSelected.GetInvocationList())
+				ItemSelected -= (EventHandler<EventArgs<T>>)d;
+
+			foreach (var d in ItemLongPressed.GetInvocationList())
+				ItemLongPressed -= (EventHandler<EventArgs<T>>)d;
+		}
+
+
 	}
 }
 
