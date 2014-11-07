@@ -103,15 +103,19 @@ namespace Xamarin.Tables
 				hasBoundLongTouch = false;
 			}
 
+			if(CellFor != null)
 			foreach (var d in CellFor.GetInvocationList())
 				CellFor -= (GetCellEventHandler)d;
 
+			if(CellForHeader != null)
 			foreach (var d in CellForHeader.GetInvocationList())
 				CellForHeader -= (GetHeaderCellEventHandler)d;
 
+			if(ItemSelected != null)
 			foreach (var d in ItemSelected.GetInvocationList())
 				ItemSelected -= (EventHandler<EventArgs<T>>)d;
 
+			if(ItemLongPressed != null)
 			foreach (var d in ItemLongPressed.GetInvocationList())
 				ItemLongPressed -= (EventHandler<EventArgs<T>>)d;
 		}
