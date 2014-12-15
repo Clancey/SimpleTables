@@ -13,14 +13,33 @@ namespace Xamarin.Tables
 		bool hasBoundLongTouch;
 		protected UITableView tv;
 		UILongPressGestureRecognizer gesture;
-		void bindLongTouch(UITableView tableview)
+		void bindLongTouch()
 		{
-			if (hasBoundLongTouch)
+			if (hasBoundLongTouch || tv == null)
 				return;
 			hasBoundLongTouch = true;
-			gesture = new UILongPressGestureRecognizer (LongPress);
-			tableview.AddGestureRecognizer (gesture);
-			tv = tableview;
+			gesture = new UILongPressGestureRecognizer (LongPress){
+				ShouldRecognizeSimultaneously = (s,e)=> true,
+			};
+			tv.AddGestureRecognizer (gesture);
+		}
+		bool shouldBind;
+		void updateLongPress()
+		{
+			var count = itemLongPress == null ? 0 : itemLongPress.GetInvocationList ().Length;
+			if (count == 1 && hasBoundLongTouch)
+				return;
+			if (count == 1) {
+				shouldBind = true;
+				bindLongTouch ();
+			}
+			if (count == 0 && hasBoundLongTouch) {
+				tv.RemoveGestureRecognizer (gesture);
+				gesture = null;
+				hasBoundLongTouch = false;
+				return;
+			}
+
 		}
 		public void LongPress(UILongPressGestureRecognizer gesture)
 		{
@@ -41,7 +60,8 @@ namespace Xamarin.Tables
 		}
 		public override nint NumberOfSections (UITableView tableView)
 		{
-			bindLongTouch (tableView);
+			tv = tableView;
+			updateLongPress ();
 			return NumberOfSections ();
 		}
 		public override UITableViewCell GetCell (UITableView tableView, Foundation.NSIndexPath indexPath)
@@ -115,9 +135,9 @@ namespace Xamarin.Tables
 			foreach (var d in ItemSelected.GetInvocationList())
 				ItemSelected -= (EventHandler<EventArgs<T>>)d;
 
-			if(ItemLongPressed != null)
-			foreach (var d in ItemLongPressed.GetInvocationList())
-				ItemLongPressed -= (EventHandler<EventArgs<T>>)d;
+			if(itemLongPress != null)
+				foreach (var d in itemLongPress.GetInvocationList())
+					ItemLongPressed -= (EventHandler<EventArgs<T>>)d;
 		}
 
 

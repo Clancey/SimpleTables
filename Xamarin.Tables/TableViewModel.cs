@@ -12,7 +12,18 @@ namespace Xamarin.Tables
 
 		public event EventHandler<EventArgs<T>> ItemSelected;
 
-		public event EventHandler<EventArgs<T>> ItemLongPressed;
+		EventHandler<EventArgs<T>> itemLongPress;
+		public event EventHandler<EventArgs<T>> ItemLongPressed
+		{
+			add{
+				itemLongPress += value;
+				updateLongPress();
+			}
+			remove{
+				itemLongPress -= value;
+				updateLongPress ();
+			}
+		}
 
 		public abstract int RowsInSection (int section);
 
@@ -48,8 +59,8 @@ namespace Xamarin.Tables
 		
 		public virtual void LongPressOnItem(T item)
 		{
-			if (ItemLongPressed != null)
-				ItemLongPressed (this, new EventArgs<T> (item));
+			if (itemLongPress != null)
+				itemLongPress (this, new EventArgs<T> (item));
 		}
 		
 		public abstract T ItemFor (int section, int row);
