@@ -58,18 +58,35 @@ namespace Xamarin.Tables
 		Context Context;
 		LayoutInflater inflater;
 		int sectionedListSeparator = 0;
-		
+		ListView listView;
 		public TableViewModel(Context context,ListView listView, int sectionedListSeparatorLayout = Android.Resource.Layout.SimpleListItem1)
 		{
-			this.Context = context;
+			UpdateNative (context, listView);
 			this.inflater = LayoutInflater.From (context);
-			listView.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => ItemClicked (e.Position);
-			listView.LongClick += (object sender, View.LongClickEventArgs e) => {
-
-			};
 			this.sectionedListSeparator = sectionedListSeparatorLayout;
 		}
 
+		void HandleItemLongClick (object sender, AdapterView.ItemLongClickEventArgs e)
+		{
+			ItemClicked(e.Position,true);
+		}
+
+		void HandleItemClick (object sender, AdapterView.ItemClickEventArgs e)
+		{
+			ItemClicked (e.Position);
+		}
+
+		public void UpdateNative(Context context, ListView listview)
+		{
+			this.Context = context;
+			if (this.listView != null) {
+				this.listView.ItemClick -= HandleItemClick;
+				this.listView.ItemLongClick += HandleItemLongClick;
+			}
+			listView = listview;
+			listView.ItemClick += HandleItemClick;
+			listView.ItemLongClick += HandleItemLongClick;
+		}
 		public void ReloadData()
 		{
 			this.NotifyDataSetChanged ();
