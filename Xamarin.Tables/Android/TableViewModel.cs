@@ -63,13 +63,20 @@ namespace Xamarin.Tables
 		{
 			this.Context = context;
 			this.inflater = LayoutInflater.From (context);
-			listView.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => {
-				ItemClicked(e.Position);
-			};
+			listView.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => ItemClicked (e.Position);
 			listView.LongClick += (object sender, View.LongClickEventArgs e) => {
 
 			};
 			this.sectionedListSeparator = sectionedListSeparatorLayout;
+		}
+
+		public void ReloadData()
+		{
+			this.NotifyDataSetChanged ();
+		}
+		public void updateLongPress()
+		{
+
 		}
 
 		public void ItemClicked (int position, bool isLongPress = false)
@@ -97,7 +104,6 @@ namespace Xamarin.Tables
 				}
 				
 				position -= size;
-				sectionIndex++;
 			}
 		}
 		public override int Count
@@ -146,7 +152,33 @@ namespace Xamarin.Tables
 			var cell = new Cell (item.ToString ()){BackGroundColor = Color.Gray, TextColor = Color.White};
 			return cell.GetCell (convertView, parent, Context);
 		}
-		
+
+		public virtual void ClearEvents()
+		{
+//			if (listView != null) {
+//				tv.RemoveGestureRecognizer (gesture);
+//				gesture = null;
+//				tv = null;
+//				hasBoundLongTouch = false;
+//			}
+
+			if(CellFor != null)
+				foreach (var d in CellFor.GetInvocationList())
+					CellFor -= (GetCellEventHandler)d;
+
+			if(CellForHeader != null)
+				foreach (var d in CellForHeader.GetInvocationList())
+					CellForHeader -= (GetHeaderCellEventHandler)d;
+
+			if(ItemSelected != null)
+				foreach (var d in ItemSelected.GetInvocationList())
+					ItemSelected -= (EventHandler<EventArgs<T>>)d;
+
+			if(itemLongPress != null)
+				foreach (var d in itemLongPress.GetInvocationList())
+					ItemLongPressed -= (EventHandler<EventArgs<T>>)d;
+		}
+
 		public override object this [int position] {
 			get {
 				var sectionCount = NumberOfSections();
