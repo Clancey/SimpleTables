@@ -18,7 +18,7 @@ namespace Xamarin.Tables
 			CGSize size = new CGSize (280, float.MaxValue);
 			
 			var font = Font ?? UIFont.SystemFontOfSize (14);
-			var height = tableView.StringSize (Caption, font, size, LineBreakMode).Height;
+			var height = Caption.StringSize (font, size, LineBreakMode).Height;
 			height *= 1.5f;
 			return NMath.Max(44,height);
 		}

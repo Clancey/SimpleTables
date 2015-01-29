@@ -32,8 +32,6 @@ namespace Xamarin.Tables
 		}
 		public override void Selected (UITableView tableView, NSIndexPath indexPath)
 		{
-			if (Tapped != null)
-				Tapped ();
 			if(ShouldDeselect)
 				tableView.DeselectRow (indexPath, true);
 		}

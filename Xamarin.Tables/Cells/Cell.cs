@@ -4,6 +4,10 @@ namespace Xamarin.Tables
 {
 	public partial class Cell  : IDisposable 
 	{
+		public Cell()
+		{
+
+		}
 		public string Caption;
 		
 		public string Detail;

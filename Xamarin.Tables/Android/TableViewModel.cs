@@ -172,13 +172,10 @@ namespace Xamarin.Tables
 
 		public virtual void ClearEvents()
 		{
-//			if (listView != null) {
-//				tv.RemoveGestureRecognizer (gesture);
-//				gesture = null;
-//				tv = null;
-//				hasBoundLongTouch = false;
-//			}
-
+			if (this.listView != null) {
+				this.listView.ItemClick -= HandleItemClick;
+				this.listView.ItemLongClick += HandleItemLongClick;
+			}
 			if(CellFor != null)
 				foreach (var d in CellFor.GetInvocationList())
 					CellFor -= (GetCellEventHandler)d;
