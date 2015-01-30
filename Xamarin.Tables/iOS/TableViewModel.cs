@@ -99,10 +99,10 @@ namespace Xamarin.Tables
 			if (gesture != null) {
 				tv.RemoveGestureRecognizer (gesture);
 				gesture = null;
-				tv = null;
 				hasBoundLongTouch = false;
 			}
 
+			tv = null;
 			if(CellFor != null)
 			foreach (var d in CellFor.GetInvocationList())
 				CellFor -= (GetCellEventHandler)d;
