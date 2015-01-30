@@ -43,7 +43,7 @@ namespace Xamarin.Tables
 
 		public override int RowsInSection (int section)
 		{
-			return Sections[section].Count;
+			return Sections[(int)section].Count;
 		}
 
 		public override ICell GetICell (int section, int position)

@@ -4,7 +4,7 @@ namespace Xamarin.Tables
 {
 	public partial interface ICell
 	{
-		MonoTouch.UIKit.UITableViewCell GetCell (MonoTouch.UIKit.UITableView tv);
+		UIKit.UITableViewCell GetCell (UIKit.UITableView tv);
 	}
 }
 

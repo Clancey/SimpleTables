@@ -1,6 +1,6 @@
 using System;
 #if iOS
-using MonoTouch.UIKit;
+using UIKit;
 #endif
 
 namespace Xamarin.Tables

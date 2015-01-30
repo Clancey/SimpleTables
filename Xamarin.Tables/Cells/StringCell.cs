@@ -44,6 +44,11 @@ namespace Xamarin.Tables
 		{
 			return (Value != null ? Value.IndexOf (text, StringComparison.CurrentCultureIgnoreCase) != -1: false) || base.Matches (text);
 		}
+		public override void Selected ()
+		{
+			if (Tapped != null)
+				Tapped ();
+		}
 	}
 
 }

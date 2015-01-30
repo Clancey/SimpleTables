@@ -1,11 +1,11 @@
 using System;
-using MonoTouch.UIKit;
-using MonoTouch.Foundation;
+using UIKit;
+using Foundation;
 
 namespace Xamarin.Tables
 {
 	public interface ICellSizing {
-		float GetHeight (UITableView tableView, NSIndexPath indexPath);
+		nfloat GetHeight (UITableView tableView, NSIndexPath indexPath);
 	}
 }
 

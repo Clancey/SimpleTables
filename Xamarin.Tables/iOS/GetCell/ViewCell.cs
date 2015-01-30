@@ -1,7 +1,7 @@
 using System;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
-using System.Drawing;
+using Foundation;
+using UIKit;
+using CoreGraphics;
 
 namespace Xamarin.Tables
 {
@@ -49,7 +49,7 @@ namespace Xamarin.Tables
 					// This trick is necessary to keep the background clear, otherwise
 					// it gets painted as black
 					//
-					cell.BackgroundView = new UIView (RectangleF.Empty) { 
+					cell.BackgroundView = new UIView (CGRect.Empty) { 
 						BackgroundColor = UIColor.Clear 
 					};
 				}
@@ -63,7 +63,7 @@ namespace Xamarin.Tables
 			return cell;
 		}
 		
-		public float GetHeight (UITableView tableView, NSIndexPath indexPath)
+		public nfloat GetHeight (UITableView tableView, NSIndexPath indexPath)
 		{
 			return View.Bounds.Height;
 		}

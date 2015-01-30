@@ -1,7 +1,7 @@
 using System;
-using MonoTouch.UIKit;
-using MonoTouch.Foundation;
-using System.Drawing;
+using UIKit;
+using Foundation;
+using CoreGraphics;
 
 namespace Xamarin.Tables
 {
@@ -9,18 +9,18 @@ namespace Xamarin.Tables
 		public StyledMultilineCell (string caption) : base (caption) {}
 		public StyledMultilineCell (string caption, string value) : base (caption, value) {}
 		public StyledMultilineCell (string caption, Action tapped) : base (caption, tapped) {}
-		public float Height {get;set;}
+		public nfloat Height {get;set;}
 		
-		public virtual float GetHeight (UITableView tableView, NSIndexPath indexPath)
+		public virtual nfloat GetHeight (UITableView tableView, NSIndexPath indexPath)
 		{
 			if(Height != 0)
 				return Height;
-			SizeF size = new SizeF (280, float.MaxValue);
+			CGSize size = new CGSize (280, float.MaxValue);
 			
 			var font = Font ?? UIFont.SystemFontOfSize (14);
-			var height = tableView.StringSize (Caption, font, size, LineBreakMode).Height;
+			var height = Caption.StringSize (font, size, LineBreakMode).Height;
 			height *= 1.5f;
-			return Math.Max(44,height);
+			return NMath.Max(44,height);
 		}
 	}
 

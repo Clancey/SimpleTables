@@ -1,6 +1,6 @@
 using System;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 
 namespace Xamarin.Tables
 {
@@ -32,8 +32,6 @@ namespace Xamarin.Tables
 		}
 		public override void Selected (UITableView tableView, NSIndexPath indexPath)
 		{
-			if (Tapped != null)
-				Tapped ();
 			if(ShouldDeselect)
 				tableView.DeselectRow (indexPath, true);
 		}
