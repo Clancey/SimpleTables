@@ -76,7 +76,7 @@ namespace Xamarin.Tables
 			var item = ItemFor (indexPath.Section, indexPath.Row);
 			if (item is Cell)
 				(item as Cell).Selected (tableView, indexPath);
-			tv.DeselectRow (indexPath, true);
+			tableView.DeselectRow (indexPath, true);
 			RowSelected (item);
 		}	
 		
