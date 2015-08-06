@@ -44,6 +44,11 @@ namespace Xamarin.Tables
 			return  new StringCell(item == null ? ""  : item.ToString());
 		}
 
+		protected ICell GetCellFromEvent(T item)
+		{
+			return CellFor?.Invoke(item);
+		}
+
 		public abstract string HeaderForSection(int section);
 		
 		public virtual string[] SectionIndexTitles ()
