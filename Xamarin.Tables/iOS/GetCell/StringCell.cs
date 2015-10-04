@@ -34,6 +34,7 @@ namespace Xamarin.Tables
 		{
 			if(ShouldDeselect)
 				tableView.DeselectRow (indexPath, true);
+			base.Selected(tableView, indexPath);
 		}
 	}
 }

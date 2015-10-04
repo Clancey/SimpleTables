@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{CCACF42C-24F0-4032-A17E-BF2B45F380F0}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Xamarin.Tables.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CollapsableTableViewModal.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IImageUpdated.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IndexPath.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Section.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TableViewCellModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TableViewListModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TableViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TableViewSectionModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\Cell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\EntryCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\RadioCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\RadioCellOptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\StringCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\StyledMultilineCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\StyledStringCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\ViewCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)iOS\CollapsableTableViewModal.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)iOS\ICell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)iOS\ICellSizing.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)iOS\TableViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)iOS\TableViewSectionModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)iOS\GetCell\Cell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)iOS\GetCell\RadioCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)iOS\GetCell\StringCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)iOS\GetCell\StyledMultilineCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)iOS\GetCell\StyledStringCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)iOS\GetCell\ViewCell.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Utilities\" />
+  </ItemGroup>
+</Project>

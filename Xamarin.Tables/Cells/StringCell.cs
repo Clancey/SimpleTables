@@ -46,8 +46,7 @@ namespace Xamarin.Tables
 		}
 		public override void Selected ()
 		{
-			if (Tapped != null)
-				Tapped ();
+			Tapped?.Invoke();
 		}
 	}
 

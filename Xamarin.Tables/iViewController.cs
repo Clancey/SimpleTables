@@ -1,5 +1,5 @@
 using System;
-#if iOS
+#if __IOS__ || __TV__
 using UIKit;
 #endif
 

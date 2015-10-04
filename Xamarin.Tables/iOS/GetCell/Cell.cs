@@ -15,6 +15,7 @@ namespace Xamarin.Tables
 		}
 		public virtual void Selected (UITableView tableView, NSIndexPath path)
 		{
+			Selected();
 		}
 	}
 }
