@@ -46,7 +46,7 @@ namespace Xamarin.Tables
 			if(state == IsCollapsed(section))
 				return;
 			collapsed[section] = state;
-			ReloadData(state,section,animate);
+			ReloadData();//state,section,animate);
 		}
 		public void SetDefaultState(int section,bool state)
 		{

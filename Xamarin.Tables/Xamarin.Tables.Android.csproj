@@ -12,9 +12,11 @@
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AssemblyName>Xamarin.Tables.Android</AssemblyName>
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <newfilesearch>OnLoad</newfilesearch>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -81,7 +83,6 @@
     <Compile Include="Cells\StyledStringCell.cs" />
     <Compile Include="Cells\ViewCell.cs" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Android\" />
     <Folder Include="Resources\" />
@@ -171,4 +172,5 @@
     <AndroidResource Include="Resources\anim\slide_out_right.xml" />
     <AndroidResource Include="Resources\layout\anav.xml" />
   </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

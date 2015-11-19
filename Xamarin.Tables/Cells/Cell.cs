@@ -2,7 +2,7 @@ using System;
 
 namespace Xamarin.Tables
 {
-	public partial class Cell  : IDisposable 
+	public partial class Cell  : IDisposable, ICell
 	{
 		public Cell()
 		{
@@ -51,6 +51,10 @@ namespace Xamarin.Tables
 		public virtual void Selected()
 		{
 
+		}
+		public override string ToString ()
+		{
+			return Caption;
 		}
 	}
 }

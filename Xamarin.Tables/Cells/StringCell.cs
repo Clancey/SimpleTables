@@ -48,6 +48,10 @@ namespace Xamarin.Tables
 		{
 			Tapped?.Invoke();
 		}
+		public override string ToString ()
+		{
+			return $"{Caption} {Value}";
+		}
 	}
 
 }

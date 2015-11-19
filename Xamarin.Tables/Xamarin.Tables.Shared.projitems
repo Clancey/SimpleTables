@@ -26,17 +26,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Cells\StyledMultilineCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Cells\StyledStringCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Cells\ViewCell.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)iOS\CollapsableTableViewModal.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)iOS\ICell.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)iOS\ICellSizing.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)iOS\TableViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)iOS\TableViewSectionModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)iOS\GetCell\Cell.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)iOS\GetCell\RadioCell.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)iOS\GetCell\StringCell.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)iOS\GetCell\StyledMultilineCell.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)iOS\GetCell\StyledStringCell.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)iOS\GetCell\ViewCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Utilities\" />

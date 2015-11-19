@@ -12,7 +12,7 @@ namespace Xamarin.Tables
 		{
 			if (section > 0)
 				return null;
-			return Items [position];
+			return (ICell)Items [position];
 		}
 		#endregion
 	}

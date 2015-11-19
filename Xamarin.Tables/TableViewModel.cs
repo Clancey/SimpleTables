@@ -39,9 +39,9 @@ namespace Xamarin.Tables
 			var item = ItemFor (section, row);
 			if (CellFor != null)
 			{
-				return CellFor(item) ?? new StringCell("");
+				return CellFor(item) ?? (ICell)new StringCell("");
 			}
-			return  new StringCell(item == null ? ""  : item.ToString());
+			return  (ICell)new StringCell(item == null ? ""  : item.ToString());
 		}
 
 		protected ICell GetCellFromEvent(T item)
