@@ -57,6 +57,8 @@
     <Compile Include="OSX\TableViewModel.cs" />
     <Compile Include="OSX\ICell.cs" />
     <Compile Include="OSX\Cell.cs" />
+    <Compile Include="OSX\ICollectionCell.cs" />
+    <Compile Include="OSX\CollectionViewSource.cs" />
   </ItemGroup>
   <Import Project="Xamarin.Tables.Shared.projitems" Label="Shared" Condition="Exists('Xamarin.Tables.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />

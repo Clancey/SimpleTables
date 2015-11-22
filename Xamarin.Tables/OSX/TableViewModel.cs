@@ -42,7 +42,7 @@ namespace Xamarin.Tables
 			SetTable (tableView);
 			if (sectionRows.Count == 0)
 				ReloadData ();
-			return sectionRows.LastOrDefault ()?.IndexEnd ?? 0;
+			return sectionRows.LastOrDefault ()?.IndexEnd + 1?? 0;
 		}
 
 		public override void SelectionDidChange (NSNotification notification)
@@ -54,7 +54,7 @@ namespace Xamarin.Tables
 			var item = GetItem (row);
 			RowSelected (item);
 		}
-
+			
 		List<SectionRows> sectionRows = new List<SectionRows> ();
 
 		void updateLongPress ()
@@ -75,7 +75,7 @@ namespace Xamarin.Tables
 
 		}
 
-		ICell GetICell (nint row)
+		public ICell GetICell (nint row)
 		{
 			foreach (var s in sectionRows) {
 				if (s.Contains (row)) {
@@ -86,7 +86,7 @@ namespace Xamarin.Tables
 			return null;
 		}
 
-		T GetItem(nint row)
+		public T GetItem(nint row)
 		{
 			foreach (var s in sectionRows) {
 				if (s.Contains (row)) {

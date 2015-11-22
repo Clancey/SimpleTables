@@ -37,11 +37,10 @@ namespace Xamarin.Tables
 		public virtual ICell GetICell (int section, int row)
 		{
 			var item = ItemFor (section, row);
-			if (CellFor != null)
-			{
-				return CellFor(item) ?? (ICell)new StringCell("");
-			}
-			return  (ICell)new StringCell(item == null ? ""  : item.ToString());
+			var cell = item as ICell;
+			if (cell != null)
+				return cell;
+			return GetCellFromEvent(item) ?? new StringCell(item?.ToString() ?? "");
 		}
 
 		protected ICell GetCellFromEvent(T item)
