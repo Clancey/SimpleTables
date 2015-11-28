@@ -12,7 +12,7 @@ namespace Xamarin.Tables
 		public AppKit.NSView GetCell (AppKit.NSTableView tableView, AppKit.NSTableColumn tableColumn, Foundation.NSObject owner)
 		{
 			var cell = tableView.MakeView("TextField",owner)as NSTextField ??new NSTextField{Identifier = "TextField"};
-			cell.StringValue = Caption;
+			cell.StringValue = Caption ?? "";
 			return cell;
 		}
 

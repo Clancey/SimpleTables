@@ -17,8 +17,10 @@ namespace Xamarin.Tables
 				isSet = _tableView != null;
 			}
 		}
+		public bool ShowHeaders { get; set; }
+
 		bool isSet;
-		void SetTable(NSTableView table)
+		protected void SetTable(NSTableView table)
 		{
 			if (isSet)
 				return;
@@ -41,7 +43,7 @@ namespace Xamarin.Tables
 		{
 			SetTable (tableView);
 			if (sectionRows.Count == 0)
-				ReloadData ();
+				SetupSections ();
 			return sectionRows.LastOrDefault ()?.IndexEnd + 1?? 0;
 		}
 
@@ -55,7 +57,7 @@ namespace Xamarin.Tables
 			RowSelected (item);
 		}
 			
-		List<SectionRows> sectionRows = new List<SectionRows> ();
+		protected List<SectionRows> sectionRows = new List<SectionRows> ();
 
 		void updateLongPress ()
 		{
@@ -79,6 +81,8 @@ namespace Xamarin.Tables
 		{
 			foreach (var s in sectionRows) {
 				if (s.Contains (row)) {
+					if (ShowHeaders && s.IndexStart == row)
+						return  GetHeaderICell (s.Section) ?? new StringCell(HeaderForSection(s.Section));
 					return GetICell(s.Section,s.GetSectionRow(row));
 				}
 
@@ -96,8 +100,9 @@ namespace Xamarin.Tables
 			return default(T);
 		}
 
-		class SectionRows
+		protected class SectionRows
 		{
+			public bool IncludesHeader { get; set; }
 			public int Section { get; set; }
 
 			public int Rows { get; set; }
@@ -114,7 +119,7 @@ namespace Xamarin.Tables
 
 			public int GetSectionRow(nint row)
 			{
-				int realRow = (int)(row - IndexStart);
+				int realRow = (int)(row - IndexStart - (IncludesHeader ? 1 : 0));
 				return realRow;
 			}
 
@@ -131,7 +136,7 @@ namespace Xamarin.Tables
 
 		}
 
-		public void ReloadData ()
+		void SetupSections()
 		{
 			sectionRows.Clear ();
 			var sections = NumberOfSections ();
@@ -142,14 +147,23 @@ namespace Xamarin.Tables
 				if (rows == 0)
 					continue;
 				var section = new SectionRows {
+					IncludesHeader = ShowHeaders,
 					IndexStart = index,
 					Rows = rows,
 					Section = s,
-					IndexEnd = index + rows -1,
+					IndexEnd = index + rows - (ShowHeaders ? 0 : 1),
 				};
 				index += rows;
+				if(ShowHeaders)
+					index++;
 				sectionRows.Add (section);
 			}
+		}
+
+		public void ReloadData ()
+		{
+			SetupSections ();
+			TableView?.ReloadData ();
 		}
 
 		public virtual void ClearEvents()

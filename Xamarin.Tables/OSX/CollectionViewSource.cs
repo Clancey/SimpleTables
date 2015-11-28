@@ -61,7 +61,7 @@ namespace Xamarin.Tables
 		#endregion
 
 		[Foundation.Export ("collectionView:didSelectItemsAtIndexPaths:")]
-		public void ItemsSelected (AppKit.NSCollectionView collectionView, Foundation.NSSet indexPaths)
+		public virtual void ItemsSelected (AppKit.NSCollectionView collectionView, Foundation.NSSet indexPaths)
 		{
 			indexPaths.OfType<NSIndexPath> ().ToList ().ForEach (indexPath => {
 				var item = Model.ItemFor ((int)indexPath.Section, (int)indexPath.Item);
