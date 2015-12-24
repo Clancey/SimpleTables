@@ -105,11 +105,8 @@ namespace Xamarin.Tables
 		
 		public override UITableViewCell GetCell (UITableView tv)		{
 			var key = GetKey ((int) style);
-			var cell = tv.DequeueReusableCell (key);
-			//if (cell == null){
-			cell = new UITableViewCell (style, key);
+			var cell = tv.DequeueReusableCell (key) ?? new UITableViewCell (style, key);
 			cell.SelectionStyle = UITableViewCellSelectionStyle.Blue;
-			//}
 			PrepareCell (cell);
 			return cell;
 		}
