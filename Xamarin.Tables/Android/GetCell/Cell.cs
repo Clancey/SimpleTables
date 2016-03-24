@@ -15,19 +15,19 @@ namespace Xamarin.Tables
 		{
 			var inflater = LayoutInflater.FromContext (context);
 			View view = null; // re-use an existing view, if one is available
-			int type = string.IsNullOrEmpty(Detail) ? Android.Resource.Layout.SimpleListItem1 : Android.Resource.Layout.SimpleListItem2;
+			int type = string.IsNullOrEmpty(Detail) ? global::Android.Resource.Layout.SimpleListItem1 : global::Android.Resource.Layout.SimpleListItem2;
 			if (view == null || view.Id != type) // otherwise create a new one
 				view = inflater.Inflate (type , null);
 			if(!string.IsNullOrEmpty(Caption))
 			{
-				var textView = view.FindViewById<TextView> (Android.Resource.Id.Text1);
+				var textView = view.FindViewById<TextView> (global::Android.Resource.Id.Text1);
 				textView.Text = this.Caption;
 				textView.SetTextColor (TextColor);
 				textView.SetBackgroundColor(Color.Transparent);
 			}
 			if(!string.IsNullOrEmpty(Detail))
 			{
-				var textView = view.FindViewById<TextView> (Android.Resource.Id.Text2);
+				var textView = view.FindViewById<TextView> (global::Android.Resource.Id.Text2);
 				textView.Text = this.Detail;
 				textView.SetTextColor (TextColor);
 				textView.SetBackgroundColor(Color.Transparent);

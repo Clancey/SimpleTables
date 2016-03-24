@@ -13,73 +13,95 @@ using Android.Graphics;
 
 namespace Xamarin.Tables
 {
-	public abstract partial class TableViewModel <T> :  BaseAdapter<object> , ISectionIndexer
+	public abstract partial class TableViewModel<T> : BaseAdapter<object>, ISectionIndexer
 	{
 		public override bool AreAllItemsEnabled()
 		{
 			return false;
 		}
-		
+
 		#region ISectionIndexer implementation
-		public int GetPositionForSection (int section)
+		public int GetPositionForSection(int section)
 		{
-			int count = 0;
-			for(int i = 0; i < section; i++)
+			try
 			{
-				count += RowsInSection(i);
+				return SectionsData[section].Start;
 			}
-			Console.WriteLine ("GetPositionForSection;  {0},{1}", section, count);
-			return count;
-  		}
-
-		public int GetSectionForPosition (int position)
-		{
-			int index = 0;
-			int rowCount = 0;
-			while (rowCount < position) {
-				rowCount += RowsInSection(index);
-				index ++;
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+				return 0;
 			}
-			Console.WriteLine ("Section for position;  {0},{1}", position, index);
-			return index;
-  		}
+		}
 
-		public Java.Lang.Object[] GetSections ()
+		public int GetSectionForPosition(int position)
 		{
-			List<Java.Lang.Object> sections = new List<Java.Lang.Object> ();
-			foreach(var section in SectionIndexTitles())
-				sections.Add (section);
-			return sections.ToArray ();
-  		}
+			var data = GetSectionData(position);
+			if (data.Item1 == null)
+				return 0;
+			return data.Item1.Section;
+		}
+
+		public Java.Lang.Object[] GetSections()
+		{
+			List<Java.Lang.Object> sections = new List<Java.Lang.Object>();
+			foreach (var section in SectionIndexTitles())
+				sections.Add(section);
+			return sections.ToArray();
+		}
 		#endregion
 
 		const int TYPE_SECTION_HEADER = 0;
-		
-		Context Context;
+
+		Context context;
 		LayoutInflater inflater;
 		int sectionedListSeparator = 0;
 		ListView listView;
-		public TableViewModel(Context context,ListView listView, int sectionedListSeparatorLayout = Android.Resource.Layout.SimpleListItem1)
+		public TableViewModel(int sectionedListSeparatorLayout = global::Android.Resource.Layout.SimpleListItem1)
 		{
-			UpdateNative (context, listView);
-			this.inflater = LayoutInflater.From (context);
 			this.sectionedListSeparator = sectionedListSeparatorLayout;
 		}
 
-		void HandleItemLongClick (object sender, AdapterView.ItemLongClickEventArgs e)
+		public Context Context
 		{
-			ItemClicked(e.Position,true);
+			get
+			{
+				return context ?? global::Android.App.Application.Context;
+			}
+			set
+			{
+				context = value;
+				if (value != null)
+					this.inflater = LayoutInflater.From(context);
+			}
 		}
 
-		void HandleItemClick (object sender, AdapterView.ItemClickEventArgs e)
+		public ListView ListView
 		{
-			ItemClicked (e.Position);
+			get
+			{
+				return listView;
+			}
+			set
+			{
+				UpdateListView(value);
+			}
 		}
 
-		public void UpdateNative(Context context, ListView listview)
+		void HandleItemLongClick(object sender, AdapterView.ItemLongClickEventArgs e)
 		{
-			this.Context = context;
-			if (this.listView != null) {
+			ItemClicked(e.Position, true);
+		}
+
+		void HandleItemClick(object sender, AdapterView.ItemClickEventArgs e)
+		{
+			ItemClicked(e.Position);
+		}
+
+		public void UpdateListView(ListView listview)
+		{
+			if (this.listView != null)
+			{
 				this.listView.ItemClick -= HandleItemClick;
 				this.listView.ItemLongClick += HandleItemLongClick;
 			}
@@ -89,133 +111,128 @@ namespace Xamarin.Tables
 		}
 		public void ReloadData()
 		{
-			this.NotifyDataSetChanged ();
+			this.NotifyDataSetChanged();
+		}
+		public override void NotifyDataSetChanged()
+		{
+			count = -1;
+			SectionsData.Clear();
+			base.NotifyDataSetChanged();
 		}
 		public void updateLongPress()
 		{
 
 		}
 
-		public void ItemClicked (int position, bool isLongPress = false)
+		public void ItemClicked(int position, bool isLongPress = false)
 		{
-			var sectionCount = NumberOfSections();
-			for(int sectionIndex = 0; sectionIndex < sectionCount; sectionIndex ++)
-			{
-				if (position == 0) 
-				{
-					return;
-				}
-				
-				int size = RowsInSection(sectionIndex) + 1;
-				
-				if (position < size)
-				{
-					var item = ItemFor(sectionIndex,position - 1);
-					if(item is Cell)
-						(item as Cell).Selected();
-					if(isLongPress)
-						LongPressOnItem(item);
-					else
-						RowSelected(item);
-					return;
-				}
-				
-				position -= size;
-			}
+			var item = (T)this[position];
+			if (item is Cell)
+				(item as Cell).Selected();
+			if (isLongPress)
+				LongPressOnItem(item);
+			else
+				RowSelected(item);
 		}
+
+		List<SectionData> SectionsData = new List<SectionData>();
+		int count;
 		public override int Count
 		{
-			get 
+			get
 			{
-				int count = 0;
-				
-				//Get each adapter's count + 1 for the header
+				if (count >= 0)
+					return count;
+
+				count = 0;
 				var section = NumberOfSections();
-				for(int i = 0; i < section; i++)
-					count += RowsInSection(i) + 1;
-				
+				for (int i = 0; i < section; i++)
+				{
+					var rowCount = RowsInSection(i);
+					SectionsData.Add(new SectionData
+					{
+						Section = i,
+						Start = count,
+						RowCount = rowCount
+					});
+					count += rowCount;
+				}
+
 				return count;
 			}
 		}
 
-		public override int ViewTypeCount
+		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
-			get
-			{
-				//The headers count as a view type too
-				int viewTypeCount = 1;
-				
-				//Get each adapter's ViewTypeCount
-				var section = NumberOfSections();
-				for(int i = 0; i < section; i++)
-					viewTypeCount += RowsInSection(i);
-				
-				return viewTypeCount;
-			}
+			var data = GetSectionData(position);
+			var item = GetICell(data.Item1.Section, data.Item2);
+			if (item == null)
+				return new View(Context);
+			if (item is ICell)
+				return ((ICell)item).GetCell(convertView, parent, Context);
+			var cell = new Cell(item.ToString()) { BackGroundColor = Color.Gray, TextColor = Color.White };
+			return cell.GetCell(convertView, parent, Context);
 		}
 
 		public override long GetItemId(int position)
 		{
 			return position;
 		}
-		
-		public override View GetView(int position, View convertView, ViewGroup parent)
-		{
-			var item = this[position];
-			if (item == null)
-				return new View(Context) ;
-			if(item is ICell)
-				return ((ICell)item).GetCell(convertView, parent, Context);
-			var cell = new Cell (item.ToString ()){BackGroundColor = Color.Gray, TextColor = Color.White};
-			return cell.GetCell (convertView, parent, Context);
-		}
 
 		public virtual void ClearEvents()
 		{
-			if (this.listView != null) {
+			if (this.listView != null)
+			{
 				this.listView.ItemClick -= HandleItemClick;
 				this.listView.ItemLongClick += HandleItemLongClick;
 			}
-			if(CellFor != null)
+			if (CellFor != null)
 				foreach (var d in CellFor.GetInvocationList())
 					CellFor -= (GetCellEventHandler)d;
 
-			if(CellForHeader != null)
+			if (CellForHeader != null)
 				foreach (var d in CellForHeader.GetInvocationList())
 					CellForHeader -= (GetHeaderCellEventHandler)d;
 
-			if(ItemSelected != null)
+			if (ItemSelected != null)
 				foreach (var d in ItemSelected.GetInvocationList())
 					ItemSelected -= (EventHandler<EventArgs<T>>)d;
 
-			if(itemLongPress != null)
+			if (itemLongPress != null)
 				foreach (var d in itemLongPress.GetInvocationList())
 					ItemLongPressed -= (EventHandler<EventArgs<T>>)d;
 		}
 
-		public override object this [int position] {
-			get {
-				var sectionCount = NumberOfSections();
-				for(int sectionIndex = 0; sectionIndex < sectionCount; sectionIndex ++)
-				{
-					if (position == 0) 
-					{
-						var header = GetHeaderICell(sectionIndex);
-						if(header != null)
-							return header;
-						return HeaderForSection(sectionIndex);
-					}
-					
-					int size = RowsInSection(sectionIndex) + 1;
-					
-					if (position < size)
-						return GetICell(sectionIndex,position - 1);
-					
-					position -= size;
-				}
-				
-				return null;
+
+		class SectionData
+		{
+			public int Section { get; set; }
+			public int RowCount { get; set; }
+			public int Start { get; set; }
+		}
+
+		public override object this[int position]
+		{
+			get
+			{
+				var data = GetSectionData(position);
+				if (data.Item1 == null)
+					return null;
+				return ItemFor(data.Item1.Section, data.Item2);
 			}
+		}
+
+		Tuple<SectionData,int> GetSectionData(int position)
+		{
+			foreach (var sectionData in SectionsData)
+			{
+
+				if (position < sectionData.RowCount)
+					return new Tuple<SectionData, int>(sectionData,position);
+
+				position -= sectionData.RowCount;
+			}
+			return new Tuple<SectionData, int>(null,0);
 		}
 	}
 }

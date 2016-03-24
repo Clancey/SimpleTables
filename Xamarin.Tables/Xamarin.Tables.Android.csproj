@@ -11,7 +11,7 @@
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
-    <AssemblyName>Xamarin.Tables.Android</AssemblyName>
+    <AssemblyName>Xamarin.Tables</AssemblyName>
     <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <newfilesearch>OnLoad</newfilesearch>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
-    <Reference Include="Mono.Android.Support.v13" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Android\ICell.cs" />
@@ -82,6 +81,7 @@
     <Compile Include="Cells\StyledMultilineCell.cs" />
     <Compile Include="Cells\StyledStringCell.cs" />
     <Compile Include="Cells\ViewCell.cs" />
+    <Compile Include="Cells\ICollectionCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Android\" />

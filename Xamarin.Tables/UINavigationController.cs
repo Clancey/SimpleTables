@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Android.Views;
 using Android.Widget;
-using Android;
+using Android.OS;
+using Android.Graphics;
 
 namespace Xamarin.Tables
 {
@@ -50,20 +51,21 @@ namespace Xamarin.Tables
 		{
 
 		}
-		public override void OnCreate (Android.OS.Bundle savedInstanceState)
+
+		public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
 			if(ControllerStack.Count > 1)
 				SwitchContent (CurrentFragment, false);
 		}
-		public override View OnCreateView (Android.Views.LayoutInflater inflater, Android.Views.ViewGroup container, Android.OS.Bundle savedInstanceState)
+		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
 			View v = inflater.Inflate (Resource.Layout.anav, container, false);
 			LeftButtonLayout = v.FindViewById<LinearLayout> (Resource.Id.uinavigationLeftButtonLayout);
 			RightButtonLayout = v.FindViewById<LinearLayout> (Resource.Id.uinavigationRightButtonLayout);
 			rightButton = v.FindViewById<Button> (Resource.Id.uinavigationrightbtn);
 			leftButton = v.FindViewById<Button> (Resource.Id.uinavigationleftbtn);
-			leftButton.SetTextColor (Android.Graphics.Color.White);
+			leftButton.SetTextColor (Color.White);
 			leftButton.Click += LeftClicked;
 			TitleTv = v.FindViewById<TextView> (Resource.Id.title);
 			var curFrag = CurrentFragment;
@@ -133,7 +135,7 @@ namespace Xamarin.Tables
 			base.OnResume ();
 		}
 
-		public override void OnActivityCreated (Android.OS.Bundle savedInstanceState)
+		public override void OnActivityCreated (Bundle savedInstanceState)
 		{
 			base.OnActivityCreated (savedInstanceState);
 		}

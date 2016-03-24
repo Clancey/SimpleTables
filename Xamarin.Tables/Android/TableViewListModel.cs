@@ -7,7 +7,7 @@ namespace Xamarin.Tables
 {
 	public partial class TableViewListModel<T>
 	{
-		public TableViewListModel (Context context,ListView listView,List<T> items, int sectionedListSeparatorLayout = Android.Resource.Layout.SimpleListItem1) : base(context, listView,sectionedListSeparatorLayout)
+		public TableViewListModel (List<T> items, int sectionedListSeparatorLayout = global::Android.Resource.Layout.SimpleListItem1) : base(sectionedListSeparatorLayout)
 		{
 			Items = items;
 		}
