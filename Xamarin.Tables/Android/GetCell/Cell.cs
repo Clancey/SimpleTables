@@ -11,9 +11,8 @@ namespace Xamarin.Tables
 		public int LayoutId { get; private set; }
 		public Color BackGroundColor = Color.Black;
 		public Color TextColor = Color.White;
-		public virtual View GetCell (View convertView, ViewGroup parent, Context context)
+		public virtual View GetCell (View convertView, ViewGroup parent, Context context, LayoutInflater inflater)
 		{
-			var inflater = LayoutInflater.FromContext (context);
 			View view = null; // re-use an existing view, if one is available
 			int type = string.IsNullOrEmpty(Detail) ? global::Android.Resource.Layout.SimpleListItem1 : global::Android.Resource.Layout.SimpleListItem2;
 			if (view == null || view.Id != type) // otherwise create a new one

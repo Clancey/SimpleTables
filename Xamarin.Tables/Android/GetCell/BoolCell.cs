@@ -12,9 +12,8 @@ namespace Xamarin.Tables
 		private TextView _caption;
 		private TextView _subCaption;
 
-		public override View GetCell (View convertView, ViewGroup parent, Context context)
+		public override View GetCell (View convertView, ViewGroup parent, Context context, LayoutInflater inflater)
 		{
-			var inflater = LayoutInflater.FromContext (context);
 			View layout = inflater.Inflate (Resource.Layout.dialog_onofffieldright, null);
 			if (layout != null)
 			{

@@ -1,5 +1,5 @@
 using System;
-using MonoTouch.UIKit;
+using UIKit;
 using System.Collections.Generic;
 using Xamarin.Tables;
 
@@ -14,7 +14,7 @@ namespace Tables.Sample
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-			TableView.Source = new RootViewModel (TableView);
+			TableView.Source = new ItemViewModel();
 		}
 
 

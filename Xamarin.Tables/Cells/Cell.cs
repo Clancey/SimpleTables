@@ -28,13 +28,11 @@ namespace Xamarin.Tables
 			this.Caption = caption;
 			this.Detail = detail;	
 		}
-		
-		
+
 		public void Dispose ()
 		{
 			Dispose (true);
 		}
-		
 		protected virtual void Dispose (bool disposing)
 		{
 		}

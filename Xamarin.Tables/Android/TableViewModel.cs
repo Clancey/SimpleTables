@@ -161,6 +161,13 @@ namespace Xamarin.Tables
 				return count;
 			}
 		}
+		LayoutInflater _layoutInflator;
+
+		protected LayoutInflater Inflator {
+			get {
+				return _layoutInflator ?? (_layoutInflator = LayoutInflater.FromContext(Context));
+			}
+		}
 
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
@@ -168,10 +175,11 @@ namespace Xamarin.Tables
 			var item = GetICell(data.Item1.Section, data.Item2);
 			if (item == null)
 				return new View(Context);
+				
 			if (item is ICell)
-				return ((ICell)item).GetCell(convertView, parent, Context);
+				return ((ICell)item).GetCell(convertView, parent, Context,Inflator);
 			var cell = new Cell(item.ToString()) { BackGroundColor = Color.Gray, TextColor = Color.White };
-			return cell.GetCell(convertView, parent, Context);
+			return cell.GetCell(convertView, parent, Context,Inflator);
 		}
 
 		public override long GetItemId(int position)

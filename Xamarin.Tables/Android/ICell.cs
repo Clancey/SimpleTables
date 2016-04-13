@@ -6,7 +6,7 @@ namespace Xamarin.Tables
 {
 	public partial interface ICell
 	{
-		View GetCell (View convertView, ViewGroup parent, Context context);
+		View GetCell (View convertView, ViewGroup parent, Context context, LayoutInflater inflator);
 	}
 }
 

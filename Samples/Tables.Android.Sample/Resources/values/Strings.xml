@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="hello">Hello World, Click Me!</string>
 	<string name="app_name">Tables.Android.Sample</string>
-	<string name="library_name">Xamarin.Tables.Android</string>
 </resources>
