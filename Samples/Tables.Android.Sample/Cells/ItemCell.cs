@@ -1,7 +1,7 @@
 ﻿using System;
 using Android.Views;
 using Android.Widget;
-using Xamarin.Tables;
+using SimpleTables;
 
 namespace Tables.Sample
 {

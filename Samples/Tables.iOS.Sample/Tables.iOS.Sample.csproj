@@ -107,9 +107,9 @@
     <Compile Include="Cells\ItemCell.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Xamarin.Tables\Xamarin.Tables.iOS.csproj">
+    <ProjectReference Include="..\..\src\SimpleTables.iOS\SimpleTables.iOS.csproj">
       <Project>{FFDAC76C-FB0C-4B30-B802-59112659A2D9}</Project>
-      <Name>Xamarin.Tables.iOS</Name>
+      <Name>SimpleTables.iOS</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="..\Tables.Shared\Tables.Shared.projitems" Label="Shared" Condition="Exists('..\Tables.Shared\Tables.Shared.projitems')" />
