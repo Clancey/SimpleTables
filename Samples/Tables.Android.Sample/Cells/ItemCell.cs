@@ -1,11 +1,11 @@
 ﻿using System;
 using Android.Views;
 using Android.Widget;
-using Xamarin.Tables;
+using SimpleTables;
 
 namespace Tables.Sample
 {
-	public class ItemCell : ICell, IBindingContext
+	public class ItemCell : IBindingCell
 	{
 		public ItemCell () 
 		{

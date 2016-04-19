@@ -76,9 +76,9 @@
     <Folder Include="Cells\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Xamarin.Tables\Xamarin.Tables.Android.csproj">
+    <ProjectReference Include="..\..\src\SimpleTables.Droid\SimpleTables.Droid.csproj">
       <Project>{040CA4CF-74E9-419B-A534-EE761D24C8FA}</Project>
-      <Name>Xamarin.Tables.Android</Name>
+      <Name>SimpleTables.Droid</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="..\Tables.Shared\Tables.Shared.projitems" Label="Shared" Condition="Exists('..\Tables.Shared\Tables.Shared.projitems')" />

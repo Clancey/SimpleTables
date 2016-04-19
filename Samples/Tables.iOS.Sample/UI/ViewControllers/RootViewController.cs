@@ -1,7 +1,7 @@
 using System;
 using UIKit;
 using System.Collections.Generic;
-using Xamarin.Tables;
+using SimpleTables;
 
 namespace Tables.Sample
 {

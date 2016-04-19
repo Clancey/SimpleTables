@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Xamarin.Tables;
+using SimpleTables;
 using System.Linq;
 namespace Tables.Sample
 {
