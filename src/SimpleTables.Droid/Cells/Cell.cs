@@ -35,6 +35,11 @@ namespace SimpleTables.Cells
 			view.SetBackgroundColor(BackGroundColor);
 			return view;
 		}
+
+		protected virtual void NativeDispose ()
+		{
+
+		}
 	}
 }
 

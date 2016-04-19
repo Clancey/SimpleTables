@@ -31,8 +31,6 @@ namespace SimpleTables.Cells
 		
 		public event Action Tapped;
 		
-
-		
 		public override string Summary ()
 		{
 			return Caption;
@@ -51,6 +49,12 @@ namespace SimpleTables.Cells
 		public override string ToString ()
 		{
 			return $"{Caption} {Value}";
+		}
+		protected override void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (disposing)
+				Tapped = null;
 		}
 	}
 

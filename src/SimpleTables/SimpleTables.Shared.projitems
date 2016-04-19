@@ -25,7 +25,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Cells\StringCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Cells\StyledMultilineCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Cells\StyledStringCell.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Cells\ViewCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Cells\BoolCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Cells\ICollectionCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CellRegistrar.cs" />

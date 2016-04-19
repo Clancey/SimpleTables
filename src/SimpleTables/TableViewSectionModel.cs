@@ -58,8 +58,6 @@ namespace SimpleTables
 			Sections.RemoveAt (index);
 			OnSectionRemoved (index);
 		}
-		
-		public event EventHandler<EventArgs<IndexPath>> OnSelection;
 
 		#region implemented abstract members of TableViewModel
 

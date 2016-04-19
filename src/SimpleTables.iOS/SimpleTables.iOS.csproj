@@ -57,6 +57,5 @@
     <Compile Include="Cells\StringCell.cs" />
     <Compile Include="Cells\StyledMultilineCell.cs" />
     <Compile Include="Cells\StyledStringCell.cs" />
-    <Compile Include="Cells\ViewCell.cs" />
   </ItemGroup>
 </Project>

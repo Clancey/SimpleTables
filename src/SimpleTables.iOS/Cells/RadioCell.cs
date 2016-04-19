@@ -29,9 +29,9 @@ namespace SimpleTables.Cells
 			
 			return cell;
 		}
-		public override void Selected (UITableView tableView, NSIndexPath indexPath)
+		public override void Selected (UITableView tableView, NSIndexPath path)
 		{
-			tableView.DeselectRow (indexPath, true);
+			tableView.DeselectRow (path, true);
 		}
 	}
 }

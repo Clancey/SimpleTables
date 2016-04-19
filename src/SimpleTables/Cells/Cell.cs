@@ -28,13 +28,23 @@ namespace SimpleTables.Cells
 			this.Caption = caption;
 			this.Detail = detail;	
 		}
-
+		#if !Android
 		public void Dispose ()
 		{
 			Dispose (true);
 		}
-		protected virtual void Dispose (bool disposing)
+		#endif
+
+		protected
+		#if Android
+		override
+		#else
+		virtual 
+		#endif
+		void Dispose (bool disposing)
 		{
+			if (disposing)
+				NativeDispose ();
 		}
 		public virtual string Summary ()
 		{

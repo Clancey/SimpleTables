@@ -40,6 +40,11 @@ namespace SimpleTables.Cells
 			text.StringValue = Caption;
 			return cell;
 		}
+
+		protected virtual void NativeDispose ()
+		{
+
+		}
 	}
 }
 

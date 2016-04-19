@@ -35,14 +35,12 @@ namespace SimpleTables
 			};
 			TableView.AddGestureRecognizer (gesture);
 		}
-		bool shouldBind;
 		void updateLongPress()
 		{
 			var count = itemLongPress == null ? 0 : itemLongPress.GetInvocationList ().Length;
 			if (count == 1 && hasBoundLongTouch)
 				return;
 			if (count == 1) {
-				shouldBind = true;
 				bindLongTouch ();
 			}
 			if (count == 0 && hasBoundLongTouch) {

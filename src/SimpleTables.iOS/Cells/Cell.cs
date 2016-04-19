@@ -17,6 +17,11 @@ namespace SimpleTables.Cells
 		{
 			Selected();
 		}
+
+		protected virtual void NativeDispose ()
+		{
+
+		}
 	}
 }
 

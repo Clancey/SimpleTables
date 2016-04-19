@@ -11,12 +11,13 @@ namespace SimpleTables.Cells
 				return val;
 			}
 			set {
-				bool emit = val != value;
-				val = value;
-				if (emit && ValueChanged != null)
-					ValueChanged (this, EventArgs.Empty);
+				if (val != value)
+					return;
+				ValueChanged?.Invoke (this, EventArgs.Empty);
+				OnValueChanged ();
 			}
 		}
+
 		public event EventHandler ValueChanged;
 		
 		public BoolBaseCell (string caption, bool value) : base (caption)
@@ -32,7 +33,21 @@ namespace SimpleTables.Cells
 		public override string Summary ()
 		{
 			return val ? "On" : "Off";
-		}		
+		}
+
+		protected virtual void OnValueChanged ()
+		{
+
+		}
+		protected override void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (disposing) {
+				if (ValueChanged != null)
+					foreach (var d in ValueChanged.GetInvocationList ())
+						ValueChanged -= (EventHandler)d;
+			}
+		}
 	}
 	/// <summary>
 	/// Used to display switch on the screen.
@@ -72,6 +87,13 @@ namespace SimpleTables.Cells
 		}
 		
 		public event Action Tapped;
+
+		protected override void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (disposing)
+				Tapped = null;
+		}
 		
 
 	}
