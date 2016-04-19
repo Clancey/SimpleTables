@@ -5,7 +5,7 @@ using SimpleTables;
 
 namespace Tables.Sample
 {
-	public class ItemCell : ICell, IBindingContext
+	public class ItemCell : IBindingCell
 	{
 		public ItemCell () 
 		{

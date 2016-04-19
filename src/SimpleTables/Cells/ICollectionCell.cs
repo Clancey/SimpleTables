@@ -2,7 +2,7 @@
 
 namespace SimpleTables
 {
-	public interface ICollectionCell
+	public partial interface ICollectionCell
 	{
 	}
 }

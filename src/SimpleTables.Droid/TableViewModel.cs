@@ -188,28 +188,14 @@ namespace SimpleTables
 			return position;
 		}
 
-		public virtual void ClearEvents()
+		public virtual void ClearNativeEvents ()
 		{
 			if (this.listView != null)
 			{
 				this.listView.ItemClick -= HandleItemClick;
 				this.listView.ItemLongClick += HandleItemLongClick;
 			}
-			if (CellFor != null)
-				foreach (var d in CellFor.GetInvocationList())
-					CellFor -= (GetCellEventHandler)d;
-
-			if (CellForHeader != null)
-				foreach (var d in CellForHeader.GetInvocationList())
-					CellForHeader -= (GetHeaderCellEventHandler)d;
-
-			if (ItemSelected != null)
-				foreach (var d in ItemSelected.GetInvocationList())
-					ItemSelected -= (EventHandler<EventArgs<T>>)d;
-
-			if (itemLongPress != null)
-				foreach (var d in itemLongPress.GetInvocationList())
-					ItemLongPressed -= (EventHandler<EventArgs<T>>)d;
+		
 		}
 
 

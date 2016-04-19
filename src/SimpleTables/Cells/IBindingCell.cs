@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Tables.Sample
+namespace SimpleTables
 {
-	public interface IBindingContext
+	public interface IBindingCell : ICell
 	{
 		object BindingContext { get; set; }
 	}

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Foundation;
-using UIKit;
 
 namespace SimpleTables
 {
@@ -9,11 +8,10 @@ namespace SimpleTables
 	{
 		protected virtual void OnSectionAdded (Section section)
 		{
-			
 			if (TableView == null)
 				return;
 
-			TableView.InsertSections (MakeIndexSet (Sections.IndexOf (section), 1), UITableViewRowAnimation.Fade);
+			TableView.InsertRows (MakeIndexSet (Sections.IndexOf(section), 1), AppKit.NSTableViewAnimation.SlideUp);
 		}
 
 		protected virtual void OnSectionRemoved (int index)
@@ -21,7 +19,7 @@ namespace SimpleTables
 			if (TableView == null)
 				return;
 
-			TableView.DeleteSections (MakeIndexSet (index, 1), UITableViewRowAnimation.None);
+			TableView.RemoveRows (MakeIndexSet (index, 1), AppKit.NSTableViewAnimation.SlideDown);
 		}
 
 		NSIndexSet MakeIndexSet (int start, int count)

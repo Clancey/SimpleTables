@@ -63,6 +63,7 @@
     <Compile Include="CollectionViewSource.cs" />
     <Compile Include="TableViewModel.cs" />
     <Compile Include="Cells\BoolCell.cs" />
+    <Compile Include="TableViewSectionModel.cs" />
   </ItemGroup>
   <Import Project="..\SimpleTables\SimpleTables.Shared.projitems" Label="Shared" Condition="Exists('..\SimpleTables\SimpleTables.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />

@@ -3,7 +3,7 @@ using AppKit;
 
 namespace SimpleTables
 {
-	public interface ICollectionCell
+	public partial interface ICollectionCell
 	{
 		NSCollectionViewItem GetCollectionCell (NSCollectionView collectionView, Foundation.NSIndexPath indexPath);
 	}

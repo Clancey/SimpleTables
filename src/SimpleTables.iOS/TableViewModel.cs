@@ -12,17 +12,28 @@ namespace SimpleTables
 			
 		}
 		bool hasBoundLongTouch;
-		protected UITableView tv;
+		WeakReference tableView;
+
+		protected UITableView TableView {
+			get {
+				return tableView?.Target as UITableView;
+			}
+
+			set {
+				tableView = new WeakReference(value);
+			}
+		}
+
 		UILongPressGestureRecognizer gesture;
 		void bindLongTouch()
 		{
-			if (hasBoundLongTouch || tv == null)
+			if (hasBoundLongTouch || TableView == null)
 				return;
 			hasBoundLongTouch = true;
 			gesture = new UILongPressGestureRecognizer (LongPress){
 				ShouldRecognizeSimultaneously = (s,e)=> true,
 			};
-			tv.AddGestureRecognizer (gesture);
+			TableView.AddGestureRecognizer (gesture);
 		}
 		bool shouldBind;
 		void updateLongPress()
@@ -35,7 +46,7 @@ namespace SimpleTables
 				bindLongTouch ();
 			}
 			if (count == 0 && hasBoundLongTouch) {
-				tv.RemoveGestureRecognizer (gesture);
+				TableView.RemoveGestureRecognizer (gesture);
 				gesture = null;
 				hasBoundLongTouch = false;
 				return;
@@ -44,13 +55,13 @@ namespace SimpleTables
 		}
 		public void LongPress(UILongPressGestureRecognizer gesture)
 		{
-			var point = gesture.LocationInView (tv);
+			var point = gesture.LocationInView (TableView);
 			LongPress (point);
 		}
 
 		public void LongPress(CGPoint point)
 		{
-			var indexPath = tv.IndexPathForRowAtPoint (point);
+			var indexPath = TableView.IndexPathForRowAtPoint (point);
 			if (indexPath == null)
 				return;
 			LongPressOnItem (ItemFor(indexPath.Section,indexPath.Row));
@@ -61,7 +72,7 @@ namespace SimpleTables
 		}
 		public override nint NumberOfSections (UITableView tableView)
 		{
-			tv = tableView;
+			TableView = tableView;
 			updateLongPress ();
 			return NumberOfSections ();
 		}
@@ -95,7 +106,7 @@ namespace SimpleTables
 		public override bool RespondsToSelector (ObjCRuntime.Selector sel)
 		{
 			if (sel.Name == "tableView:viewForHeaderInSection:") {
-				return GetViewForHeader (tv, 0) != null;
+				return GetViewForHeader (TableView, 0) != null;
 			}
 			return base.RespondsToSelector (sel);
 
@@ -111,37 +122,21 @@ namespace SimpleTables
 
 		public void ReloadData()
 		{
-			if (tv != null)
-				tv.ReloadData ();
+			if (TableView != null)
+				TableView.ReloadData ();
 		}
 
-		public virtual void ClearEvents()
+		protected virtual void ClearNativeEvents ()
 		{
+
 			if (gesture != null) {
-				tv.RemoveGestureRecognizer (gesture);
+				TableView.RemoveGestureRecognizer (gesture);
 				gesture = null;
 				hasBoundLongTouch = false;
 			}
 
-			tv = null;
-			if(CellFor != null)
-			foreach (var d in CellFor.GetInvocationList())
-				CellFor -= (GetCellEventHandler)d;
-
-			if(CellForHeader != null)
-			foreach (var d in CellForHeader.GetInvocationList())
-				CellForHeader -= (GetHeaderCellEventHandler)d;
-
-			if(ItemSelected != null)
-			foreach (var d in ItemSelected.GetInvocationList())
-				ItemSelected -= (EventHandler<EventArgs<T>>)d;
-
-			if(itemLongPress != null)
-				foreach (var d in itemLongPress.GetInvocationList())
-					ItemLongPressed -= (EventHandler<EventArgs<T>>)d;
+			TableView = null;
 		}
-
-
 	}
 }
 

@@ -41,7 +41,22 @@ namespace SimpleTables
 			var cell = item as ICell;
 			if (cell != null)
 				return cell;
-			return GetCellFromEvent(item) ?? new StringCell(item?.ToString() ?? "");
+			
+			if (item == null)
+				return new StringCell ("");
+
+			cell = GetCellFromEvent (item);
+
+			if (cell == null)
+				cell = CellRegistrar.GetCell (item.GetType ());
+
+			var binding = cell as IBindingCell;
+			if (binding != null)
+				binding.BindingContext = item;
+			if (cell != null)
+				return cell;
+			
+			return new StringCell(item?.ToString() ?? "");
 		}
 
 		protected ICell GetCellFromEvent(T item)
@@ -75,6 +90,28 @@ namespace SimpleTables
 			if (CellForHeader != null)
 				return CellForHeader(HeaderForSection(section));
 			return null;
+		}
+
+
+		public virtual void ClearEvents ()
+		{
+			ClearNativeEvents ();
+
+			if (CellFor != null)
+				foreach (var d in CellFor.GetInvocationList ())
+					CellFor -= (GetCellEventHandler)d;
+
+			if (CellForHeader != null)
+				foreach (var d in CellForHeader.GetInvocationList ())
+					CellForHeader -= (GetHeaderCellEventHandler)d;
+
+			if (ItemSelected != null)
+				foreach (var d in ItemSelected.GetInvocationList ())
+					ItemSelected -= (EventHandler<EventArgs<T>>)d;
+
+			if (itemLongPress != null)
+				foreach (var d in itemLongPress.GetInvocationList ())
+					ItemLongPressed -= (EventHandler<EventArgs<T>>)d;
 		}
 	}
 }

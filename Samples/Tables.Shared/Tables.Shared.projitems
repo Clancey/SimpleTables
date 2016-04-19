@@ -16,7 +16,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ItemViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CellRegistrar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseTableViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\IBindingContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
   </ItemGroup>
   <ItemGroup>

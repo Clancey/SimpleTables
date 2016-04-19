@@ -7,15 +7,16 @@ namespace SimpleTables
 {
 	public partial class TableViewSectionModel
 	{
-		public TableViewSectionModel ( int sectionedListSeparatorLayout = global::Android.Resource.Layout.SimpleListItem1) : base(sectionedListSeparatorLayout)
+		protected virtual void OnSectionAdded (Section section)
 		{
+			ReloadData ();
+		}
 
-		}
-		
-		void ReloadData()
+		protected virtual void OnSectionRemoved (int index)
 		{
-			this.NotifyDataSetChanged ();
+			ReloadData ();
 		}
+
 	}
 }
 

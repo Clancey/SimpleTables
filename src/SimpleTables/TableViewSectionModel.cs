@@ -3,19 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
 using SimpleTables.Cells;
+using System.Collections.ObjectModel;
 
 namespace SimpleTables
 {
 	public partial class TableViewSectionModel : TableViewModel<Cell>,  IEnumerable, IEnumerable<Section>
 	{
+		public TableViewSectionModel (List<Section> sections)
+		{
+			Sections = sections ?? new List<Section> ();
+		}
+
+		public TableViewSectionModel ()
+		{
+		}
+
+
+		List<Section> sections = new List<Section> ();
 		public List<Section> Sections 
 		{
 			get{return sections;}
-			set{
+			set { 
 				sections = value;
-				ReloadData();
+				ReloadData ();
 			}
 		}
+
 		public Section this [int idx] {
 			get {
 				return Sections [idx];
@@ -27,16 +40,24 @@ namespace SimpleTables
 				return;
 			
 			Sections.Add (section);
-//			if (TableView == null)
-//				return;
-			
-			//TableView.InsertSections (MakeIndexSet (Sections.Count-1, 1), UITableViewRowAnimation.None);
+			OnSectionAdded (section);
 		}
 
-		List<Section> sections = new List<Section>();
-		
-		public event EventHandler<EventArgs<Cell>> RowTapped;
-		public event EventHandler<EventArgs<Cell>> RowLongPress;
+		public void Remove (Section section)
+		{
+			if (section == null)
+				return;
+			var index = sections.IndexOf (section);
+			Sections.Remove (section);
+			OnSectionRemoved (index);
+		}
+
+
+		public void Remove (int index)
+		{
+			Sections.RemoveAt (index);
+			OnSectionRemoved (index);
+		}
 		
 		public event EventHandler<EventArgs<IndexPath>> OnSelection;
 
@@ -72,17 +93,6 @@ namespace SimpleTables
 			return Sections [section].Header;
 		}
 
-		public override void RowSelected (Cell item)
-		{
-			if (RowTapped != null)
-				RowTapped (this, new EventArgs<Cell> (item));
-		}
-		public override void LongPressOnItem (Cell item)
-		{
-			if (RowLongPress != null)
-				RowLongPress (this, new EventArgs<Cell> (item));
-		}
-
 		public override Cell ItemFor (int section, int row)
 		{
 			return Sections [section] [row];
@@ -94,7 +104,7 @@ namespace SimpleTables
 		#region IEnumerable implementation
 		public IEnumerator GetEnumerator ()
 		{
-			throw new NotImplementedException ();
+			return sections?.GetEnumerator ();
 		}
 		#endregion
 
@@ -102,10 +112,12 @@ namespace SimpleTables
 
 		IEnumerator<Section> IEnumerable<Section>.GetEnumerator ()
 		{
-			throw new NotImplementedException ();
+			return sections?.GetEnumerator ();
 		}
 
 		#endregion
+
+
 	}
 }
 

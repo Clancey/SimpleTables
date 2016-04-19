@@ -29,5 +29,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Cells\BoolCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Cells\ICollectionCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CellRegistrar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\IBindingCell.cs" />
   </ItemGroup>
 </Project>

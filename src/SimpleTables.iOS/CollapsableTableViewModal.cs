@@ -26,9 +26,9 @@ namespace SimpleTables
 			if(animated)
 				BeginAnimation();
 			if(!collapsed)
-				tv.InsertRows(indexPathsToInsert.ToArray(),UITableViewRowAnimation.Top);
+				TableView.InsertRows(indexPathsToInsert.ToArray(),UITableViewRowAnimation.Top);
 			else
-				tv.DeleteRows(indexPathsToInsert.ToArray(),UITableViewRowAnimation.Middle);
+				TableView.DeleteRows(indexPathsToInsert.ToArray(),UITableViewRowAnimation.Middle);
 			if(animated)
 				EndAnimation();
 		}
@@ -36,7 +36,7 @@ namespace SimpleTables
 		void BeginAnimation()
 		{
 			try{
-				tv.BeginUpdates();
+				TableView.BeginUpdates();
 			}
 			catch(Exception ex) {
 				Console.WriteLine (ex);
@@ -45,7 +45,7 @@ namespace SimpleTables
 		void EndAnimation()
 		{
 			try{
-				tv.EndUpdates();
+				TableView.EndUpdates();
 			}
 			catch(Exception ex) {
 				Console.WriteLine (ex);
