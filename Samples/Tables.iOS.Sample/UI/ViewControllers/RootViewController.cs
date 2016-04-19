@@ -14,7 +14,7 @@ namespace Tables.Sample
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-			TableView.Source = new RootViewModel();
+			TableView.Source = new ItemViewModel();
 		}
 
 

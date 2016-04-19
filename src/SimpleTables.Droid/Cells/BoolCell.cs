@@ -40,6 +40,14 @@ namespace SimpleTables.Cells
 		{
 			this.Value = isChecked;
 		}
+		protected override void NativeDispose ()
+		{
+			base.NativeDispose ();
+			_toggleButton = null;
+			_caption = null;
+			_subCaption = null;
+
+		}
 	}
 
 	public partial class BooleanImageCell
@@ -50,6 +58,12 @@ namespace SimpleTables.Cells
 		{
 			this.onImage = onImage;
 			this.offImage = offImage;
+		}
+		protected override void NativeDispose ()
+		{
+			base.NativeDispose ();
+			onImage = null;
+			offImage = null;
 		}
 	}
 }
