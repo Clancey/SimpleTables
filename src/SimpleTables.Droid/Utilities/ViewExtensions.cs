@@ -1,7 +1,7 @@
 using System;
 using Android.Views;
 
-namespace Xamarin.Tables
+namespace SimpleTables
 {
 	public static class ViewExtensions
 	{
