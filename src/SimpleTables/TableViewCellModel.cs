@@ -4,7 +4,7 @@ using SimpleTables.Cells;
 
 namespace SimpleTables
 {
-	public partial class TableViewCellModel : TableViewListModel<Cell>
+	public partial class TableViewCellModel : TableViewListModel<Cells.Cell>
 	{
 
 		#region implemented abstract members of TableViewModel

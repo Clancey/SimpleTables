@@ -8,15 +8,16 @@ namespace SimpleTables.Cells
 	public abstract partial class BoolBaseCell : ICell
 	{
 	}
-	public partial class BooleanCell : BoolBaseCell {
+	public partial class BooleanCell : BoolBaseCell
+	{
 		static NSString bkey = new NSString ("BooleanElement");
 		UISwitch sw;
 		public UIColor TextColor = UIColor.Black;
 
 		public override UITableViewCell GetCell (UITableView tv)
 		{
-			if (sw == null){
-				sw = new UISwitch (){
+			if (sw == null) {
+				sw = new UISwitch () {
 					BackgroundColor = UIColor.Clear,
 					Tag = 1,
 					On = Value
@@ -28,12 +29,12 @@ namespace SimpleTables.Cells
 			var cell = tv.DequeueReusableCell (bkey) ?? new UITableViewCell (UITableViewCellStyle.Subtitle, bkey) {
 				SelectionStyle = UITableViewCellSelectionStyle.None
 			};
-			
+
 			cell.TextLabel.Text = Caption;
 			cell.TextLabel.TextColor = TextColor;
 			cell.AccessoryView = sw;
-			
-			
+
+
 			return cell;
 		}
 
@@ -60,10 +61,12 @@ namespace SimpleTables.Cells
 
 
 
-	public abstract partial class BaseBooleanImageCell : BoolBaseCell {
+	public abstract partial class BaseBooleanImageCell : BoolBaseCell
+	{
 		static NSString key = new NSString ("BooleanImageElement");
-		
-		public class TextWithImageCellView : UITableViewCell {
+
+		public class TextWithImageCellView : UITableViewCell
+		{
 			const int fontSize = 17;
 			static UIFont font = UIFont.BoldSystemFontOfSize (fontSize);
 			WeakReference parent;
@@ -74,7 +77,7 @@ namespace SimpleTables.Cells
 				}
 
 				set {
-					parent = new WeakReference(value);
+					parent = new WeakReference (value);
 				}
 			}
 
@@ -82,7 +85,7 @@ namespace SimpleTables.Cells
 			UIButton button;
 			const int ImageSpace = 32;
 			const int Padding = 8;
-			
+
 			public TextWithImageCellView () : base (UITableViewCellStyle.Value1, key)
 			{
 				label = new UILabel () {
@@ -100,12 +103,12 @@ namespace SimpleTables.Cells
 				ContentView.Add (label);
 				ContentView.Add (button);
 			}
-			
+
 			public void UpdateImage ()
 			{
 				button.SetImage (Parent.GetImage (), UIControlState.Normal);
 			}
-			
+
 			public override void LayoutSubviews ()
 			{
 				base.LayoutSubviews ();
@@ -113,13 +116,13 @@ namespace SimpleTables.Cells
 				var frame = full;
 				frame.Height = 22;
 				frame.X = Padding;
-				frame.Y = (full.Height-frame.Height)/2;
-				frame.Width -= ImageSpace+Padding;
+				frame.Y = (full.Height - frame.Height) / 2;
+				frame.Width -= ImageSpace + Padding;
 				label.Frame = frame;
-				
-				button.Frame = new CGRect (full.Width-ImageSpace, -3, ImageSpace, 48);
+
+				button.Frame = new CGRect (full.Width - ImageSpace, -3, ImageSpace, 48);
 			}
-			
+
 			public void UpdateFrom (BaseBooleanImageCell newParent)
 			{
 				Parent = newParent;
@@ -133,13 +136,13 @@ namespace SimpleTables.Cells
 		WeakReference cell;
 		TextWithImageCellView Cell {
 			get { return cell?.Target as TextWithImageCellView; }
-			set { cell = new WeakReference(value); }
+			set { cell = new WeakReference (value); }
 		}
 
 		public override UITableViewCell GetCell (UITableView tv)
 		{
 			Cell = tv.DequeueReusableCell (key) as TextWithImageCellView ?? new TextWithImageCellView ();
-			Cell.SelectionStyle =  UITableViewCellSelectionStyle.None;
+			Cell.SelectionStyle = UITableViewCellSelectionStyle.None;
 			Cell.UpdateFrom (this);
 			return Cell;
 		}
@@ -149,16 +152,21 @@ namespace SimpleTables.Cells
 			base.OnValueChanged ();
 		}
 	}
-	
-	public partial class BooleanImageCell : BaseBooleanImageCell {
+
+	public partial class BooleanImageCell : BaseBooleanImageCell
+	{
 		UIImage onImage, offImage;
-		
+		public BooleanImageCell (string caption, bool value, string onImage, string offImage) : base (caption, value)
+		{
+			this.onImage = UIImage.FromBundle (onImage);
+			this.offImage = UIImage.FromBundle (offImage);
+		}
 		public BooleanImageCell (string caption, bool value, UIImage onImage, UIImage offImage) : base (caption, value)
 		{
 			this.onImage = onImage;
 			this.offImage = offImage;
 		}
-		
+
 		protected override UIImage GetImage ()
 		{
 			if (Value)

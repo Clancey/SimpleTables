@@ -20,11 +20,11 @@ namespace SimpleTables
 	/// properties, or as Views to be shown (HeaderView and FooterView).   Internally
 	/// this uses the same storage, so you can only show one or the other.
 	/// </remarks>
-    public class Section : IEnumerable<Cell>
+    public class Section : IEnumerable<Cells.Cell>
 	{
 		public string Caption;
 
-		public List<Cell> Elements = new List<Cell>();
+		public List<Cells.Cell> Elements = new List<Cells.Cell> ();
 
 		List<string> ElementTypes = new List<string>();
 
@@ -77,7 +77,7 @@ namespace SimpleTables
 		/// <param name="element">
 		/// An element to add to the section.
 		/// </param>
-		public void Add(Cell element)
+		public void Add(Cells.Cell element)
 		{
 			if (element == null)
 				return;
@@ -97,12 +97,12 @@ namespace SimpleTables
 		/// An enumerable list that can be produced by something like:
 		///    from x in ... select (Element) new MyElement (...)
 		/// </param>
-		public int Add(IEnumerable<Cell> elements)
+		public int Add(IEnumerable<Cells.Cell> elements)
 		{
 			int count = 0;
-			foreach (Cell e in elements)
+			foreach (Cells.Cell e in elements)
 			{
-				Add(e);
+				Add (e);
 				count++;
 			}
 			return count;
@@ -122,29 +122,29 @@ namespace SimpleTables
 		/// <param name="newElements">
 		/// A series of elements.
 		/// </param>
-		public void Insert(int idx, params Cell[] newElements)
+		public void Insert(int idx, params Cells.Cell[] newElements)
 		{
 			if (newElements == null)
 				return;
 
 			int pos = idx;
-			foreach (Cell e in newElements)
+			foreach (Cells.Cell e in newElements)
 			{
-				Elements.Insert(pos++, e);
+				Elements.Insert (pos++, e);
 			}
 		
 		}
 
-		public int Insert(int idx, IEnumerable<Cell> newElements)
+		public int Insert(int idx, IEnumerable<Cells.Cell> newElements)
 		{
 			if (newElements == null)
 				return 0;
 
 			int pos = idx;
 			int count = 0;
-			foreach (Cell e in newElements)
+			foreach (Cells.Cell e in newElements)
 			{
-				Elements.Insert(pos++, e);
+				Elements.Insert (pos++, e);
 				count++;
 			}
 
@@ -153,7 +153,7 @@ namespace SimpleTables
 
 	
 
-		public void Remove(Cell e)
+		public void Remove(Cells.Cell e)
 		{
 			if (e == null)
 				return;
@@ -198,9 +198,9 @@ namespace SimpleTables
 
 		public void Clear()
 		{
-			foreach (Cell e in Elements)
+			foreach (Cells.Cell e in Elements)
 				e.Dispose();
-			Elements = new List<Cell>();
+			Elements = new List<Cells.Cell> ();
 
 		}
 
@@ -211,9 +211,9 @@ namespace SimpleTables
         /// <returns>
         /// A <see cref="IEnumerator{T}"/>
         /// </returns>
-		public IEnumerator<Cell> GetEnumerator()
+		public IEnumerator<Cells.Cell> GetEnumerator()
         {
-            foreach (Cell e in Elements)
+            foreach (Cells.Cell e in Elements)
                 yield return e;
         }
 
@@ -224,7 +224,7 @@ namespace SimpleTables
         /// </returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
-			foreach (Cell e in Elements)
+			foreach (Cells.Cell e in Elements)
                 yield return e;
         }
 	}

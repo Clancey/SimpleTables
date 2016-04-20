@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 
 namespace SimpleTables
 {
-	public partial class TableViewSectionModel : TableViewModel<Cell>,  IEnumerable, IEnumerable<Section>
+	public partial class TableViewSectionModel : TableViewModel<Cells.Cell>,  IEnumerable, IEnumerable<Section>
 	{
 		public TableViewSectionModel (List<Section> sections)
 		{
