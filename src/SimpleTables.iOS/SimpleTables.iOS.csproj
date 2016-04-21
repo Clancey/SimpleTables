@@ -9,7 +9,7 @@
     <RootNamespace>SimpleTables</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <newfilesearch>OnLoad</newfilesearch>
-    <AssemblyName>SimpleTables.iOS</AssemblyName>
+    <AssemblyName>SimpleTables</AssemblyName>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>

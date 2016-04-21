@@ -2,19 +2,19 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>Clancey.SimpleTables</id>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <authors>Clancey</authors>
         <licenseUrl>https://github.com/Clancey/SimpleTables/blob/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/Clancey/SimpleTables</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Super easy and performant iOS/Android ListViews</description>
         <summary>This is the framework/Patern I use to quickly build my iOS/Android data driven apps</summary>
-        <releaseNotes>Initial Release</releaseNotes>
+        <releaseNotes>Fixed package</releaseNotes>
         <copyright>James Clancey</copyright>
     </metadata>
     <files>
         <file src="src\SimpleTables.Droid\bin\Release\SimpleTables.dll" target="lib\MonoAndroid\SimpleTables.dll" />
-        <file src="src\SimpleTables.Pcl\bin\Release\SimpleTables.Pcl.dll" target="lib\Portable-Net45+WinRT45+WP8+WPA81\SimpleTables.dll" />
-        <file src="src\SimpleTables.iOS\bin\Release\SimpleTables.iOS.dll" target="lib\Xamarin.iOS10\SimpleTables.dll" />
+        <file src="src\SimpleTables.Pcl\bin\Release\SimpleTables.dll" target="lib\Portable-Net45+WinRT45+WP8+WPA81\SimpleTables.dll" />
+        <file src="src\SimpleTables.iOS\bin\Release\SimpleTables.dll" target="lib\Xamarin.iOS10\SimpleTables.dll" />
     </files>
 </package>
