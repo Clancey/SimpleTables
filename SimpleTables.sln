@@ -11,8 +11,6 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Tables.Shared", "Samples\Ta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tables.Android.Sample", "Samples\Tables.Android.Sample\Tables.Android.Sample.csproj", "{E4F36C44-D693-4B8A-9225-E0F44FC8AB74}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SimpleTables.Shared", "src\SimpleTables\SimpleTables.Shared.shproj", "{CCACF42C-24F0-4032-A17E-BF2B45F380F0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTables.iOS", "src\SimpleTables.iOS\SimpleTables.iOS.csproj", "{FFDAC76C-FB0C-4B30-B802-59112659A2D9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTables.Droid", "src\SimpleTables.Droid\SimpleTables.Droid.csproj", "{040CA4CF-74E9-419B-A534-EE761D24C8FA}"

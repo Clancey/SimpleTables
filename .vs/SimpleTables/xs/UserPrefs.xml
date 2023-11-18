@@ -1,0 +1,18 @@
+﻿<Properties StartupConfiguration="{A076F048-4002-4C2F-8672-019432E83F0E}|Default">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Samples.Tables.iOS.Sample PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.E7F3289B-C3FE-4393-AD86-A44C1717CE50" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SimpleTables" expanded="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

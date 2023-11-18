@@ -1,0 +1,36 @@
+﻿<Properties>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Platforms/CollapsableTableViewModal.cs">
+    <Files>
+      <File FileName="SimpleTables/Cells/Cell.cs" Line="5" Column="44" />
+      <File FileName="SimpleTables/Cells/IBindingCell.cs" Line="5" Column="34" />
+      <File FileName="SimpleTables/TableViewModel.cs" />
+      <File FileName="SimpleTables.csproj" Line="31" Column="41" />
+      <File FileName="Platforms/MaciOS/Cells/StyledMultilineCell.cs" Line="24" Column="11" />
+      <File FileName="SimpleTables/CellRegistrar.cs" Line="29" Column="17" />
+      <File FileName="Platforms/MaciOS/Cells/ICell.cs" Line="1" Column="1" />
+      <File FileName="obj/Debug/net7.0-android/Resource.designer.cs" Line="40" Column="31" />
+      <File FileName="Platforms/Android/Resources/values/Strings.xml" Line="3" Column="54" />
+      <File FileName="Platforms/Android/Resources/Resource.designer.cs" Line="248" Column="1" />
+      <File FileName="Platforms/MaciOS/Cells/Cell.cs" Line="7" Column="35" />
+      <File FileName="Platforms/MaciOS/CollapsableTableViewModal.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SimpleTables" expanded="True">
+            <Node name="SimpleTables" expanded="True" selected="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Platforms" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
